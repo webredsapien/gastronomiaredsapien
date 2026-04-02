@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Red Sapien Gastro | + Pedidos y Reservas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --carbon: #000000;
+            --brasa: #FF3C00;
+            --co-yellow: #FCD116;
+            --co-blue: #003893;
+            --co-red: #CE1126;
+            --wa-green: #25D366;
+            --rappi-mustache: #FF441F;
+        }
+
+        /* 🛠️ RESET & BASE CORREGIDO */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--carbon);
+            color: white;
+            /* Se elimina Flex para permitir el flujo vertical natural */
+            display: block; 
+        }
+
+        /* 🔥 ATMÓSFERA INMERSIVA TOTAL */
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(255, 60, 0, 0.05) 0%, transparent 45%),
+                linear-gradient(rgba(0,0,0,0.96), rgba(0,0,0,0.96)),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* 🚅 CARRUSEL ESTRATÉGICO */
+        .flame-slider {
+            width: 100%;
+            background: #050505;
+            padding: 12px 0;
+            border-bottom: 2px solid var(--brasa);
+            overflow: hidden;
+            display: flex;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 0; /* Aseguramos espacio consistente */
+        }
+
+        .slider-track {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+            animation: slide 35s linear infinite;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0 35px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .item b { color: var(--brasa); margin-right: 8px; }
+
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* 🇨🇴 BANDERA REFINADA */
+        .flag-pole {
+            position: absolute;
+            top: 65px;
+            right: 15%;
+            width: 2px;
+            height: 50px;
+            background: #222;
+            z-index: 99;
+        }
+        .colombia-flag {
+            position: absolute;
+            top: 0;
+            left: 2px;
+            width: 42px;
+            height: 28px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: wave 3s ease-in-out infinite;
+        }
+        .c-yellow { flex: 2; background: var(--co-yellow); }
+        .c-blue { flex: 1; background: var(--co-blue); }
+        .c-red { flex: 1; background: var(--co-red); }
+
+        @keyframes wave {
+            0%, 100% { transform: skewY(0deg) rotate(0deg); }
+            50% { transform: skewY(6deg) translateY(2px); }
+        }
+
+      /* 🏔️ CONTENIDO: CORREGIDO PARA NO EMPUJAR LA FLECHA */
+.main-engine {
+    min-height: 90vh; 
+    /* Ajuste profesional de espacios: padding superior equilibrado, laterales 10% */
+    padding: 100px 10% 12vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotate(-1.2deg);
+    position: relative;
+    z-index: 5;
+    margin-bottom: 20px; /* separación con siguiente sección */
+}
+
+        .logo-sapien {
+            width: 125px;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.05));
+        }
+
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.3rem, 9vw, 4.5rem);
+            line-height: 0.95;
+            color: white;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid var(--brasa);
+            padding-left: 18px;
+        }
+
+        .hero-copy {
+    font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+    color: #bbb;
+    max-width: 460px;
+    line-height: 1.5;
+    margin-bottom: 2rem; /* Espacio justo para que el botón suba */
+}
+
+        .rappi-style {
+            color: var(--rappi-mustache);
+            font-weight: 900;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+            font-size: 1.4em;
+            margin: 0 5px;
+        }
+        .rappi-style::after {
+            content: "⌣";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+
+        .btn-layers {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.2rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            width: 100%;
+            max-width: 320px;
+            transition: 0.3s;
+            z-index: 1;
+        }
+        .btn-layers::before, .btn-layers::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 2px;
+            z-index: -1;
+            transition: 0.4s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-layers:hover {
+            background: var(--brasa);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .btn-layers:hover::before { transform: translate(-6px, -6px); opacity: 0.5; }
+        .btn-layers:hover::after { transform: translate(6px, 6px); opacity: 0.5; }
+
+        /* 💬 WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed;
+            bottom: 35px;
+            right: 25px;
+            width: 70px;
+            height: 70px;
+            background-color: var(--wa-green);
+            color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            animation: wa-glow 2.5s infinite alternate;
+        }
+
+        @keyframes wa-glow {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .wa-float svg { width: 35px; height: 35px; }
+
+        .wa-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #FF0000;
+            color: white;
+            font-size: 12px;
+            font-weight: 900;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.15;
+        }
+        .arrow-down {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg);
+            animation: bounce 3s infinite;
+        }
+
+        @keyframes bounce { 0%, 100% { transform: rotate(45deg) translate(0,0); } 50% { transform: rotate(45deg) translate(5px,5px); } }
+
+       @media (max-width: 600px) {
+    /* Ajuste profesional: padding superior e inferior balanceados para móvil */
+    .main-engine { padding: 80px 8% 100px; transform: rotate(-0.5deg); margin-bottom: 10px; }
+    .hero-title { font-size: 2.6rem; }
+    .wa-float { width: 60px; height: 60px; }
+}
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+   <div class="flame-slider">
+        <div class="slider-track">
+            <div class="item"><b class="sutil-icon">⤿</b> Pedidos directos a su WhatsApp</div>
+            <div class="item"><b class="sutil-icon">⊙</b> Más reservas directas</div>
+            <div class="item"><b class="sutil-icon">✦</b> Cero likes vanidosos, 100% ventas reales</div>
+            <div class="item"><b class="sutil-icon">⌖</b> Dominio total de su zona</div>
+            <div class="item"><b class="sutil-icon">⌬</b> Usted recupera el 100% de su margen</div>
+            
+            <div class="item"><b class="sutil-icon">⤿</b> Pedidos directos a su WhatsApp</div>
+            <div class="item"><b class="sutil-icon">⊙</b> Más reservas directas</div>
+            <div class="item"><b class="sutil-icon">✦</b> Cero likes vanidosos, 100% ventas reales</div>
+            <div class="item"><b class="sutil-icon">⌖</b> Dominio total de su zona</div>
+            <div class="item"><b class="sutil-icon">⌬</b> Usted recupera el 100% de su margen</div>
+
+            <div class="item"><b class="sutil-icon">⤿</b> Pedidos directos a su WhatsApp</div>
+            <div class="item"><b class="sutil-icon">⊙</b> Más reservas directas</div>
+            <div class="item"><b class="sutil-icon">✦</b> Cero likes vanidosos, 100% ventas reales</div>
+            <div class="item"><b class="sutil-icon">⌖</b> Dominio total de su zona</div>
+            <div class="item"><b class="sutil-icon">⌬</b> Usted recupera el 100% de su margen</div>
+        </div>
+    </div>
+
+    <style>
+        /* Añade esto a tu sección de CSS para que los iconos se vean premium */
+        .sutil-icon {
+            color: var(--brasa); /* O usa #666 para un gris muy sutil */
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            margin-right: 12px;
+            opacity: 0.8;
+            font-weight: 400 !important; /* Más delgado para que sea elegante */
+        }
+        
+        .item {
+            color: #999; /* Texto en gris claro para que el carrusel sea discreto */
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+    </style>
+
+    <div class="flag-pole">
+        <div class="colombia-flag">
+            <div class="c-yellow"></div>
+            <div class="c-blue"></div>
+            <div class="c-red"></div>
+        </div>
+    </div>
+
+    <main class="main-engine">
+        <img src="Imagenes/Logo-Red-Sapien.webp" alt="Red Sapien" class="logo-sapien">
+        <h1 class="hero-title" id="typewriter">¿Dueñ@ de su margen?</h1>
+        <p class="hero-copy">
+    Deje de pagar el 30% a <span class="rappi-style">Rappi</span>. 
+    Creamos su propio sistema de pedidos directo a WhatsApp para que usted tome el control y venda más hoy mismo.
+</p>
+      <a href="https://wa.me/573012800024?text=👋%20Hola%20Sapien%2C%20vengo%20de%20la%20web.%20Quiero%20la%20AUDITORÍA%20GRATIS%20ahora%20mismo%20para%20mi%20restaurante%20🔥" class="btn-layers" target="_blank">
+    AUDITORÍA GRATIS AHORA
+</a>
+    </main>
+
+    <nav class="radar-nav" id="radarNav">
+    <div class="radar-content">
+        <div class="radar-loc">
+            <span class="pulse-green"></span>
+            MANIZALES • EJE CAFETERO • MEDELLÍN • COLOMBIA
+        </div>
+        <a href="https://wa.me/573012800024?text=Hola%20sapien%20deseo%20reclamar%20el%20control%20de%20mi%20marca%20✊🔥" class="radar-cta">RECLAMAR CONTROL</a>
+    </div>
+</nav>
+
+<section class="control-room">
+    <div class="smoke-overlay"></div>
+    <div class="fingerprint-area" id="thermalCanvas"></div>
+
+    <div class="room-container tilted-right">
+        
+        <div class="panel-header">
+            <div class="warning-tag">
+                <span class="blink">!</span> ESTADO: RENTABILIDAD BAJO ATAQUE
+            </div>
+            <h2 class="impact-title">
+                Su restaurante tiene un <br>
+                <span class="neon-text-red">botón de apagado</span> ajeno.
+            </h2>
+        </div>
+
+        <div class="power-grid">
+            <div class="power-card off-state" onclick="triggerLocked('rappi')">
+                <div class="switch-ui">
+                    <div class="lever-base"><div class="lever-handle"></div></div>
+                    <span class="label">MODO: <span class="rappi-style" style="font-size: 1.1em; color: #555;">Rappi</span></span>
+                </div>
+                <h3>Dependencia Total</h3>
+                <p>Usted es dueñ@ de nada. Si la App decide subir comisión o esconderle, su cocina se apaga en segundos.</p>
+                <div id="msg-rappi" class="lock-msg">ESTO NO ESTÁ BAJO SU CONTROL</div>
+            </div>
+
+            <div class="power-card on-state active-neon" onclick="triggerLocked('propio')">
+                <div class="switch-ui">
+                    <div class="lever-base"><div class="lever-handle"></div></div>
+                    <span class="label">MODO: CONTROL PROPIO</span>
+                </div>
+                <h3>Su Negocio, Sus Reglas</h3>
+                <p>Dueñ@ de sus clientes y su base de datos. Dinero directo a su cuenta sin peajes del 30%.</p>
+                <div id="msg-propio" class="lock-msg">SU NEGOCIO NUNCA SE APAGA</div>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <div class="tech-card neon-border-orange">
+                <div class="tech-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h4>Pedidos directo a WhatsApp</h4>
+                <p>Sitio web con IA integrada para optimizar tiempos. No es solo una pagina, es su cajer@ 24/7.</p>
+                <div class="status-bar"><div class="fill" style="width: 95%"></div></div>
+            </div>
+
+            
+
+            <div class="tech-card neon-border-purple">
+                <div class="tech-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                </div>
+                <h4>Facebook Ads + Pixel</h4>
+                <p>Campañas con Pixel conectado. Sabemos quién tiene hambre y se lo mostramos.</p>
+                <div class="status-bar"><div class="fill" style="width: 91%"></div></div>
+            </div>
+            <div class="tech-card neon-border-blue">
+                <div class="tech-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20z"/><path d="M2 12h20"/></svg>
+                </div>
+                <h4>Google Local & SEO</h4>
+                <p>Dominio en Manizales y Antioquia. Logramos que le encuentren antes que a la competencia.</p>
+                <div class="status-bar"><div class="fill" style="width: 88%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* 1. ESTRUCTURA DE ICONOS - COMPACTA Y PEGADA A LA SECCIÓN ANTERIOR */
+    .gastro-loader-track {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 50px;
+        /* Subimos la sección para que no se aleje de lo que está arriba */
+        margin: -30px auto 20px; 
+        padding: 0 20px;
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .loader-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        opacity: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .loader-item svg {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 8px;
+    }
+
+    /* Forzar Blanco total para nitidez */
+    .loader-item svg path, 
+    .loader-item svg rect, 
+    .loader-item svg circle {
+        fill: #fff !important;
+        stroke: #fff !important;
+    }
+
+    .loader-item span {
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #fff !important;
+        letter-spacing: 1px;
+    }
+
+    /* 2. MÓVIL: 2 FILAS AGRUPADAS Y PEGADAS */
+    @media (max-width: 600px) {
+        .gastro-loader-track {
+            display: grid !important;
+            grid-template-columns: repeat(2, 110px); 
+            justify-content: center !important;
+            gap: 15px 10px;
+            /* En móvil lo pegamos aún más a la sección de arriba */
+            margin-top: -20px; 
+            margin-bottom: 15px; 
+        }
+
+        .loader-item svg {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+        }
+
+        .loader-item span {
+            font-size: 0.6rem;
+        }
+
+        .progress-line { display: none !important; }
+    }
+
+    /* 3. AISLAMIENTO DEL SLIDER (Protección horizontal) */
+    .vault-container { 
+        width: 100%; 
+        margin-top: 0 !important; 
+    }
+
+    .slides-wrapper { 
+        display: flex !important; 
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+    }
+
+    .case-slide { 
+        min-width: 100% !important; 
+        flex: 0 0 100% !important;
+    }
+</style>
+
+<section class="results-vault" id="resultados">
+    
+    <div class="bg-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <div class="gastro-loader-track">
+        <div class="loader-item" style="--delay: 0.13s">
+            <svg viewBox="0 0 100 100"><path d="M20 40h15v50H20zM40 30h15v60H40zM60 40h15v50H60z" fill="#333"/><path d="M25 80c10-5 20-5 35 0M30 70c15-5 25-5 40 0" stroke="#444" stroke-width="5" fill="none"/></svg>
+            <span>Salchipapa</span>
+        </div>
+        <div class="loader-item" style="--delay: 0.39s">
+            <svg viewBox="0 0 100 100"><path d="M20 60a30 20 0 0 1 60 0z" fill="#333"/><rect x="15" y="65" width="70" height="15" fill="#222"/></svg>
+            <span>Hamburguesa</span>
+        </div>
+        <div class="loader-item" style="--delay: 0.65s">
+            <svg viewBox="0 0 100 100"><path d="M20 70q30-20 60 0t-60 0" fill="#333" stroke="#444" stroke-width="2"/></svg>
+            <span>Alta Cocina</span>
+        </div>
+        <div class="loader-item" style="--delay: 0.91s">
+            <svg viewBox="0 0 100 100"><path d="M50 20L85 85H15z" fill="#333"/><circle cx="45" cy="55" r="3" fill="#222"/></svg>
+            <span>Pizzería</span>
+        </div>
+        <div class="progress-line"></div>
+    </div>
+
+    <div class="vault-container">
+        <div class="vault-header">
+            <h2 class="v-title">No se fíen solo de nuestra palabra.<br><span class="neon-text-red">Ell@s ya lo confirman.</span></h2>
+            <p class="v-copy">
+                Dueñ@s de restaurantes que, como usted, buscaban recuperar su rentabilidad. Hoy son <strong>referentes indiscutibles en su región</strong>, escalaron sus ventas y ya no dependen de terceros gracias a su propio ecosistema digital.
+            </p>
+        </div>
+
+        <div class="slider-master">
+            <div class="slider-nav-btns">
+                <button class="nav-arrow prev" onclick="moveSlide(-1)">❮</button>
+                <button class="nav-arrow next" onclick="moveSlide(1)">❯</button>
+            </div>
+
+            <div class="slides-container">
+                <div class="slides-wrapper" id="mainWrapper">
+                    
+                    <div class="case-slide theme-potato">
+                        <div class="case-info-top"><h3>Salchipotato Manizales</h3></div>
+                        <div class="case-content">
+                            <div class="case-visuals">
+                                <div class="frame-pc" onclick="openLightbox('https://redsapien.com/wp-content/uploads/2026/03/Resultados-Ads-Campana.webp')">
+                                    <div class="pc-screen">
+                                        <img src="Imagenes/Resultados-Ads-Campaña.webp" alt="Métricas">
+                                        <div class="click-hint">VER MÉTRICAS 🔍</div>
+                                    </div>
+                                    <div class="pc-base"></div>
+                                </div>
+                                <div class="frame-mobile">
+                                    <div class="mobile-screen"><img src="Imagenes/debastador-food.webp" alt="Mobile"></div>
+                                </div>
+                            </div>
+                            <div class="case-info">
+                                <div class="badge-status">DOMINIO LOCAL</div>
+                                <p>Eficiencia total en pauta digital. Capturamos la demanda en su ciudad y la enviamos directo a su WhatsApp sin intermediarios.</p>
+                                <div class="tech-specs">
+                                    <div class="spec"><span>LEADS</span><strong>3,066</strong></div>
+                                    <div class="spec highlight"><span>COSTO</span><strong>$920 <small>PESOS / Mensaje</small></strong></div>
+                                    <div class="spec"><span>MARGEN</span><strong>+45%</strong></div>
+                                </div>
+                                <a href="https://devastador.redsapien.com/" target="_blank" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-slide theme-plancha">
+                        <div class="case-info-top"><h3>La Plancha</h3></div>
+                        <div class="case-content">
+                            <div class="case-visuals">
+                                <div class="frame-pc">
+                                    <div class="pc-screen"><img src="Imagenes/La-plancha-Reseñas.webp" alt="Reseñas"></div>
+                                    <div class="pc-base"></div>
+                                </div>
+                                <div class="frame-mobile" onclick="openLightbox('https://redsapien.com/wp-content/uploads/2026/03/Vista-previa-la-plancha-web-dayro-moreno.jpg')">
+                                    <div class="mobile-screen">
+                                        <img src="Imagenes/Vista-previa-la-plancha-web-dayro-moreno.webp" alt="Dayro">
+                                        <div class="click-hint">VER REBRANDING 🔍</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="case-info">
+                                <div class="badge-status">AUTORIDAD REGIONAL</div>
+                                <p>Transformación de marca. Un ecosistema visual que genera antojo e incluye Asistente de IA para perfilar comensales.</p>
+                                <ul class="feats-list">
+                                    <li>✓ Diseño que genera hambre</li>
+                                    <li>✓ IA integrada 24/7</li>
+                                    <li>✓ Autoridad con figuras públicas</li>
+                                </ul>
+                                <a href="https://laplanchamanizales.redsapien.com/" target="_blank" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-slide theme-medrano">
+                        <div class="case-info-top"><h3>Señor Medrano</h3></div>
+                        <div class="case-content">
+                            <div class="case-visuals stack-mode">
+                                <div class="frame-pc layer-1"><div class="pc-screen"><img src="Imagenes/Medrano-web-reservas.webp" alt="Medrano Reservas"></div><div class="pc-base"></div></div>
+                                <div class="frame-pc layer-2"><div class="pc-screen"><img src="Imagenes/Medrano-web.webp" alt="Pedidos Medrano"></div><div class="pc-base"></div></div>
+                            </div>
+                            <div class="case-info">
+                                <div class="badge-status">ALTA RENTABILIDAD</div>
+                                <p>Arquitectura dual avanzada. Separamos reservas premium de pedidos rápidos para optimizar tiempos y facturación.</p>
+                                <div class="tech-specs">
+                                    <div class="spec"><span>CLIENTES</span><strong>FIDELIZADOS</strong></div>
+                                    <div class="spec highlight"><span>ROI</span><strong>EXPONENCIAL</strong></div>
+                                </div>
+                                <a href="https://srmedrano.co/" target="_blank" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()"><span class="close-lb">&times;</span><img id="lb-img" src=""></div>
+</section>
+
+<section class="pricing-engine" id="oferta">
+    <div class="pricing-bg-decor">
+        <div class="profit-grid"></div>
+        <div class="floating-elements">
+            <span class="float-icon neon-glow" style="top:15%; left:8%">📈</span>
+            <span class="float-icon neon-glow" style="top:65%; left:4%">💰</span>
+            <span class="float-icon neon-glow" style="top:20%; right:6%">🛵</span>
+            <span class="float-icon neon-glow" style="top:75%; right:10%">💵</span>
+        </div>
+    </div>
+
+    <div class="pricing-container">
+        <header class="pricing-header">
+            <div class="badge-delivery">LISTO EN 3 DÍAS EXACTOS</div>
+            <h2 class="p-title">¿BUSCA LIKES? <br><span class="text-brasa">MEJOR LE TRAEMOS VENTAS DIRECTO AL WHATSAPP.</span></h2>
+            
+            <div class="p-lead-box">
+               <p>
+    ¿Ya trabaja con agencia o marketer@? ¡Qué nota! Pero los likes no pagan cuentas. 
+    Convertimos ese <span style="color:#FF3C00; text-decoration: underline;"><a href="https://es.wikipedia.org/wiki/Pornograf%C3%ADa_alimentaria" target="_blank" style="color:#FF3C00; text-decoration: underline; font-weight: 800;">foodporn</a></span> 
+    en más pedidos. No los reemplazamos, hacemos que su trabajo por fin le dé plata. 
+    <strong>Aquí lo que usted recibe es rentabilidad pura.</strong>
+</p>
+                
+                <div class="trust-bar-neon">
+                    <span class="pulse-green">●</span>
+                    <p><strong>Garantía Única:</strong> Nada de pagos inciertos por adelantado. Usted solo nos paga cuando su ecosistema esté rodando.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="plans-wrapper">
+            
+            <article class="p-card js-tilt">
+                <div class="card-inner">
+                    <div class="card-side-left">
+                        <span class="card-tag">PAGO ÚNICO • SIN CUOTAS MENSUALES</span>
+                        <div class="plan-head">
+                            <h3>Máquina <br><span class="highlight-brasa">"Solo dele Play"</span></h3>
+                            <div class="price-display">
+                                <span class="amount">296.000</span>
+                                <span class="currency">PESOS</span>
+                            </div>
+                            <p class="price-subtitle">Usted tiene las llaves y el control total.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-side-right">
+                        <div class="services-list">
+                            <div class="service-item">
+                                <strong class="neon-text">🌐 Web Personalizada + IA:</strong>
+                                <p>Carga ultra rápida. Pedidos directo a su WhatsApp.</p>
+                            </div>
+                            <div class="service-item">
+                                <strong class="neon-text">🚀 Campaña Meta + Rebranding:</strong>
+                                <p>Publicidad local que trae clientes reales y conversiones.</p>
+                            </div>
+                            <div class="service-item">
+                                <strong class="neon-text">📍 Google Maps Pro:</strong>
+                                <p>Posicionamiento para que lo encuentren primero.</p>
+                            </div>
+                        </div>
+
+                        <div class="roi-stats">
+                            <div class="roi-number">+65 a 95 pedidos nuevos / mes</div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer-mobile">
+                        <div class="fuel-box">
+                            <strong>⛽ Inversión Diaria (Nequi):</strong>
+                            <p>Cargue <strong>13.000 Pesos diarios</strong> a Facebook. La campaña rueda sola.</p>
+                        </div>
+                        <a href="https://wa.me/573012800024?text=Hola%20sapien%20quiero%20el%20plan%20pago%20unico%20sin%20cuotas%20y%20control%20total%20🚀" class="btn-action b-brasa">
+                            Encender mi máquina
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="p-card featured js-tilt">
+                <div class="card-inner">
+                    <div class="card-side-left">
+                        <div class="inner-ribbon">EL FAVORITO / TÚ MANDAS, CANCELA CUANDO QUIERAS</div>
+                        <span class="card-tag tag-brasa">PILOTO EXPERTO INCLUIDO</span>
+                        <div class="plan-head">
+                            <h3>Máquina <br><span class="highlight-brasa">"En Automático"</span></h3>
+                            <div class="price-display">
+                                <span class="amount">396.000</span>
+                                <div class="price-stack">
+                                    <span class="currency">PESOS</span>
+                                    <span class="period">/ MES</span>
+                                </div>
+                            </div>
+                            <p class="price-subtitle">Usted solo despacha y recibe los pagos.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-side-right">
+                        <div class="services-list">
+                            <div class="service-item">
+                                <strong class="neon-text">🏎️ Todo el Plan Pro + Gestión:</strong>
+                                <p>Web, Meta y Maps operados al 100% por nosotros.</p>
+                            </div>
+                            <div class="service-item">
+                                <strong class="neon-text">🤖 Reputación e IA 24/7:</strong>
+                                <p>Atención inteligente que responde reseñas en Google.</p>
+                            </div>
+                            <div class="service-item">
+                                <strong class="neon-text">🎬 Contenido y Copys:</strong>
+                                <p>Textos y gestión de contenido para ventas seguras.</p>
+                            </div>
+                        </div>
+
+                        <div class="roi-stats">
+                            <div class="roi-number rs-premium">+120 a 170 pedidos nuevos / mes</div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer-mobile">
+                        <div class="fuel-box fb-premium">
+                            <strong>🏁 Presupuesto Grandes Ligas:</strong>
+                            <p>Invierta <strong>19.000 Pesos diarios</strong> para dominar su sector local.</p>
+                        </div>
+                        <a href="https://wa.me/573012800024?text=Hola%20sapien%20quiero%20el%20plan%20piloto%20experto%20para%20vender%20en%20automatico%20🏎️🏁" class="btn-action b-dark">
+                            Solicitar mi piloto
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800;900&display=swap');
+
+    :root {
+        --c-fondo: #000000;
+        --c-brasa: #FF3C00;
+        --c-blanco: #ffffff;
+        --c-neon-v: #25D366;
+    }
+
+    .pricing-engine { background-color: var(--c-fondo); padding: 80px 4%; font-family: 'Inter', sans-serif; overflow: hidden; position: relative; margin-bottom: 40px; }
+    .pricing-bg-decor { position: absolute; inset: 0; pointer-events: none; }
+    .profit-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 60, 0, 0.15) 1.5px, transparent 1.5px); background-size: 60px 60px; }
+    .float-icon { position: absolute; font-size: 2.5rem; opacity: 0.15; }
+    .neon-glow { filter: drop-shadow(0 0 10px var(--c-brasa)); }
+
+    .pricing-container { max-width: 1250px; margin: 0 auto; position: relative; z-index: 10; }
+    .pricing-header { text-align: center; margin-bottom: 50px; }
+    
+    .badge-delivery { display: inline-block; padding: 10px 22px; border: 2px solid var(--c-brasa); color: var(--c-brasa); font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 6px; margin-bottom: 20px; }
+    .p-title { font-family: 'Anton', sans-serif; font-size: clamp(2rem, 5vw, 4rem); line-height: 0.95; color: var(--c-blanco); text-transform: uppercase; margin-bottom: 15px; }
+    .text-brasa { color: var(--c-brasa); }
+    .p-lead-box p { color: #d1d1d1; font-size: 1.1rem; line-height: 1.4; max-width: 800px; margin: 0 auto; }
+
+    .trust-bar-neon { background: rgba(37, 211, 102, 0.05); border: 2px solid var(--c-neon-v); padding: 12px 30px; border-radius: 50px; display: inline-flex; align-items: center; gap: 12px; margin-top: 25px; }
+    .pulse-green { color: var(--c-neon-v); animation: pulse 2s infinite; font-size: 1.2rem; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .trust-bar-neon p { font-size: 1rem; color: #fff; font-weight: 700; margin: 0; }
+
+    .plans-wrapper { display: flex; flex-direction: column; gap: 40px; }
+    .p-card { background: #111; border-radius: 30px; padding: 4px; transition: 0.4s; width: 100%; }
+    .card-inner { background: var(--c-blanco); border-radius: 26px; padding: 40px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; color: #111; position: relative; }
+    .featured { background: linear-gradient(135deg, var(--c-brasa), #ff7b00); }
+
+    .card-tag { font-size: 10px; font-weight: 900; color: #888; letter-spacing: 1.5px; margin-bottom: 10px; display: block; }
+    .tag-brasa { color: var(--c-brasa); }
+
+    /* Títulos reducidos un 20% */
+    .plan-head h3 { font-family: 'Anton', sans-serif; font-size: 2.4rem; line-height: 1; margin-bottom: 10px; text-transform: uppercase; }
+    .highlight-brasa { color: var(--c-brasa); }
+
+    .price-display { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 5px; }
+    .amount { font-family: 'Anton', sans-serif; font-size: 4.8rem; line-height: 0.8; letter-spacing: -2px; }
+    .currency { font-weight: 900; font-size: 1.2rem; padding-bottom: 6px; }
+    .period { font-size: 1rem; font-weight: 900; color: var(--c-brasa); }
+    .price-subtitle { font-size: 1rem; color: #444; font-weight: 700; margin-bottom: 20px; }
+
+    .services-list { flex-grow: 1; }
+    .service-item { margin-bottom: 18px; }
+    .neon-text { display: block; font-size: 1.05rem; color: #000; font-weight: 800; margin-bottom: 3px; }
+    .service-item p { font-size: 0.95rem; color: #555; line-height: 1.3; margin: 0; }
+
+    .fuel-box { background: #f8f8f8; padding: 15px; border-radius: 12px; border-left: 5px solid #111; margin-bottom: 15px; }
+    .fb-premium { background: #fff5f2; border-left-color: var(--c-brasa); }
+    .fuel-box strong { font-size: 0.9rem; display: block; margin-bottom: 4px; }
+    .fuel-box p { font-size: 0.85rem; margin: 0; color: #666; }
+
+    .roi-stats { padding: 15px; background: #f0f7ff; border-radius: 12px; border-left: 5px solid #0066ff; }
+    .featured .roi-stats { border-left-color: var(--c-brasa); }
+    .roi-number { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: #0066ff; }
+    .rs-premium { color: var(--c-brasa); }
+
+    .btn-action { display: block; text-align: center; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 900; font-size: 1.1rem; transition: 0.3s; }
+    .b-brasa { background: var(--c-brasa); color: #fff; box-shadow: 0 6px 0 #b32a00; }
+    .b-dark { background: var(--c-fondo); color: #fff; box-shadow: 0 6px 0 #333; }
+
+    .inner-ribbon { background: var(--c-fondo); color: #fff; padding: 6px 15px; font-size: 10px; font-weight: 900; border-radius: 4px; display: inline-block; margin-bottom: 15px; }
+
+    /* AJUSTES MÓVIL */
+    @media (max-width: 950px) {
+        .card-inner { display: flex; flex-direction: column; gap: 25px; padding: 30px 20px; }
+        .card-footer-mobile { order: 10; display: flex; flex-direction: column; gap: 10px; }
+        .plan-head h3 { font-size: 2.1rem; }
+        .amount { font-size: 4rem; }
+        .p-title { font-size: 1.8rem; }
+        .pricing-header { margin-bottom: 30px; }
+        .trust-bar-neon { flex-direction: column; text-align: center; width: 100%; border-radius: 15px; }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".js-tilt");
+        cards.forEach(card => {
+            card.addEventListener("mousemove", (e) => {
+                if(window.innerWidth < 950) return; 
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateX = ((y - rect.height/2) / (rect.height/2)) * -3;
+                const rotateY = ((x - rect.width/2) / (rect.width/2)) * 3;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            });
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "none";
+            });
+        });
+    });
+</script>
+
+<style>
+    /* VARIABLES DE NEÓN SUTIL - Tonos refinados */
+    :root { 
+        --potato-neon: rgba(252, 209, 22, 0.7); /* Amarillo Hambre */
+        --potato-bg: rgba(252, 209, 22, 0.05); /* Ligeramente más vivo */
+        
+        --plancha-neon: rgba(255, 215, 0, 0.6); /* Amarillo Corporativo */
+        --plancha-bg: rgba(255, 215, 0, 0.04);
+        
+        --medrano-neon: rgba(255, 140, 0, 0.7); /* Naranja Disruptivo */
+        --medrano-bg: rgba(255, 140, 0, 0.05);
+        
+        --glass-bg: rgba(255, 255, 255, 0.02);
+        --carbon: #050505;
+        --brasa: #FF3C00;
+    }
+
+    .results-vault { 
+        background: var(--carbon); 
+        padding: 60px 5%; 
+        overflow: hidden; 
+        position: relative; 
+        border-top: 1px solid #111;
+        margin-bottom: 40px;
+    }
+
+    /* LINEAS DE FONDO SUTILES (Profundidad 3D) */
+    .bg-lines { position: absolute; inset: 0; display: flex; justify-content: space-around; pointer-events: none; z-index: 1; opacity: 0.15; }
+    .bg-lines .line { width: 1px; height: 100%; background: linear-gradient(to bottom, transparent, #222, transparent); }
+
+    /* 📊 LOADER (Sólo se activa al entrar - Centrado Perfecto) */
+    .gastro-loader-track { display: flex; justify-content: center; gap: 40px; margin-bottom: 50px; position: relative; z-index: 10; width: 100%; }
+    .loader-item { text-align: center; opacity: 0; transform: translateY(20px); transition: 0.8s var(--delay) cubic-bezier(0.23, 1, 0.32, 1); }
+    .results-vault.visible .loader-item { opacity: 1; transform: translateY(0); }
+    .loader-item svg { width: 32px; height: 32px; filter: grayscale(1) opacity(0.3); margin-bottom: 10px; transition: 0.3s; }
+    .loader-item:hover svg { filter: grayscale(0) opacity(1); transform: scale(1.1); }
+    .loader-item span { display: block; font-size: 10px; color: #444; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;}
+    .results-vault.visible .fries svg { filter: grayscale(0) opacity(1); fill: #FCD116; }
+
+    /* 🖋️ TEXTOS DISRUPTIVOS (Alineados Derecha + Inclinación Derecha) */
+    .vault-container { position: relative; z-index: 10; max-width: 1300px; margin: 0 auto; }
+    .vault-header { 
+        text-align: right; 
+        margin-bottom: 50px; 
+        margin-left: auto; 
+        transform: rotate(1.2deg); /* Inclinado a la Derecha */
+    }
+    .v-title { font-family: 'Anton'; font-size: clamp(2.2rem, 5.5vw, 3.8rem); color: #fff; line-height: 1.1; margin-bottom: 15px; }
+    .neon-text-red { color: var(--brasa); text-shadow: 0 0 10px rgba(255, 60, 0, 0.4); }
+    .v-copy { max-width: 750px; margin-left: auto; color: #999; font-size: 1.15rem; line-height: 1.6; }
+
+    /* 🎠 SLIDER CORE */
+    .slides-container { overflow: hidden; width: 100%; border-radius: 4px; border: 1px solid #111; background: rgba(0,0,0,0.5); }
+    .slides-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+    .case-slide { min-width: 100%; padding: 40px; box-sizing: border-box; }
+
+    /* Jerarquía Móvil: Nombre arriba siempre */
+    .case-info-top h3 { font-family: 'Anton'; font-size: 2.5rem; color: #fff; margin-bottom: 30px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+
+    .case-content { display: grid; grid-template-columns: 1fr 0.8fr; gap: 40px; align-items: center; }
+
+    /* 📱 DISPOSITIVOS Y MARCOS */
+    .case-visuals { position: relative; height: 380px; display: flex; align-items: center; justify-content: center; }
+    .frame-pc { width: 85%; max-width: 480px; z-index: 1; position: relative; transition: 0.5s; }
+    .pc-screen { border: 8px solid #1a1a1a; border-radius: 10px 10px 0 0; aspect-ratio: 16/10; overflow: hidden; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .pc-screen img { width: 100%; height: 100%; object-fit: cover; }
+    .frame-pc:hover { transform: translateY(-5px); }
+
+    .frame-mobile { position: absolute; bottom: -10px; right: 5%; width: 130px; height: 260px; background: #000; border: 6px solid #1a1a1a; border-radius: 20px; z-index: 3; box-shadow: -15px 15px 40px rgba(0,0,0,0.8); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .frame-mobile:hover { transform: rotate(-5deg) scale(1.05); }
+    .mobile-screen { height: 100%; overflow: hidden; border-radius: 16px; }
+    .mobile-screen img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* FICHA TÉCNICA CON GLASSMORPHISM Y NEÓN SUTIL (Fondo sutil color base) */
+    .case-info { 
+        padding: 40px; 
+        border-radius: 2px; 
+        backdrop-filter: blur(15px); 
+        border: 1px solid var(--case-neon); 
+        background: var(--case-bg); /* Fondo sutil de color base */
+        position: relative; 
+        transition: 0.4s;
+    }
+    .case-info:hover { box-shadow: 0 0 25px var(--case-neon); }
+
+    /* Badge de estado neutro */
+    .badge-status { color: #fff; font-size: 11px; font-weight: 900; letter-spacing: 2px; margin-bottom: 15px; display: inline-block; padding: 5px 12px; background: rgba(255,255,255,0.05); border-radius: 2px; border: 1px solid rgba(255,255,255,0.1); }
+    .case-info p { color: #ccc; margin-bottom: 25px; font-size: 1rem; line-height: 1.5; }
+
+    .tech-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px; }
+    .spec { background: rgba(0,0,0,0.4); padding: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+    .spec strong { display: block; color: #fff; font-size: 1.15rem; }
+    .spec span { font-size: 9px; color: #777; font-weight: 800; text-transform: uppercase; }
+    .spec.highlight strong { color: var(--brasa); text-shadow: 0 0 10px rgba(255, 60, 0, 0.3); }
+
+    .feats-list { list-style: none; margin-bottom: 30px; }
+    .feats-list li { color: #fff; margin-bottom: 8px; font-weight: 700; font-size: 0.95rem; }
+
+    /* Botón de activo vivo refinado (Vivo pero sutil) */
+    .btn-live { 
+        display: block; 
+        text-align: center; 
+        padding: 15px; 
+        border: 1px solid #fff; 
+        color: #fff; 
+        text-decoration: none; 
+        font-weight: 900; 
+        font-size: 13px; 
+        letter-spacing: 1px; 
+        transition: 0.3s;
+    }
+    .btn-live:hover { 
+        background: #fff; 
+        color: #000; 
+        box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+
+    /* TEMAS DE COLOR NEÓN SUTIL */
+    .theme-potato { --case-neon: var(--potato-neon); --case-bg: var(--potato-bg); }
+    .theme-plancha { --case-neon: var(--plancha-neon); --case-bg: var(--plancha-bg); }
+    .theme-medrano { --case-neon: var(--medrano-neon); --case-bg: var(--medrano-bg); }
+
+    /* 🕹️ CONTROLES (Más responsivos, arriba) */
+    .slider-master { position: relative; }
+    .slider-nav-btns { position: absolute; top: 180px; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); z-index: 100; pointer-events: none; padding: 0 10px; }
+    .nav-arrow { width: 45px; height: 45px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; pointer-events: all; font-size: 18px; transition: 0.3s; backdrop-filter: blur(5px); }
+    .nav-arrow:hover { background: var(--brasa); border-color: var(--brasa); }
+
+    /* Hint de navegación eliminado */
+
+    /* STACK MEDRANO (Mejorado) */
+    .stack-mode .layer-1 { transform: translateX(-40px) rotate(-4deg); }
+    .stack-mode .layer-2 { position: absolute; transform: translateX(40px) rotate(4deg); z-index: 2; border: 1px solid #ff8c00aa; }
+    .stack-mode:hover .layer-1 { transform: translateX(-50px) rotate(-6deg); }
+    .stack-mode:hover .layer-2 { transform: translateX(50px) rotate(6deg); }
+
+    /* 📱 RESPONSIVE FINAL (100% Blindado - Especial La Plancha Fix) */
+    @media (max-width: 900px) {
+        .results-vault { padding: 40px 6%; }
+        .case-slide { padding: 25px 15px; }
+        .case-info-top h3 { font-size: 2rem; margin-bottom: 20px; text-align: left; } /* Alineado a la izquierda */
+        .case-content { 
+            grid-template-columns: 1fr; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            width: 100%; /* Blindado */
+        }
+        .case-visuals { 
+            order: 1; 
+            height: 280px; 
+            width: 100%; 
+            margin-bottom: 20px; 
+            display: flex;
+            justify-content: center; /* Centrado Perfecto móvil */
+        }
+        .case-info { order: 2; padding: 20px; width: 100%; } /* Ficha técnica abajo */
+        
+        .frame-pc { max-width: 250px; }
+        .frame-mobile { width: 90px; height: 180px; right: 20px; bottom: 0; }
+        
+        .spec strong { font-size: 1rem; }
+        .btn-live { padding: 12px; font-size: 12px; }
+        
+        .slider-nav-btns { top: auto; bottom: -45px; width: 110px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; gap: 10px; }
+        .nav-arrow { width: 40px; height: 40px; }
+    }
+
+    /* LIGHTBOX */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.98); display: none; align-items: center; justify-content: center; z-index: 99999; backdrop-filter: blur(10px); }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90%; max-height: 80vh; border: 2px solid #333; box-shadow: 0 0 50px rgba(0,0,0,0.9); }
+    .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; transition: 0.3s; }
+    .close-lb:hover { color: var(--brasa); }
+</style>
+
+<script>
+    // --- MOTOR DE SLIDER (Refinado) ---
+    let currentIndex = 0;
+    const wrapper = document.getElementById('mainWrapper');
+    const totalSlides = document.querySelectorAll('.case-slide').length;
+    let autoPlayInterval;
+
+    // Navegación principal
+    function moveSlide(direction) {
+        // Detener autoplay al primer clic
+        stopAutoPlay();
+        
+        // Pista sutil eliminada
+
+        currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+        updateSliderPosition();
+    }
+
+    function updateSliderPosition() {
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // --- AUTOPLAY INTELIGENTE (6 segundos recomendados por el usuario) ---
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSliderPosition();
+        }, 6000); // 6 Segundos recomendados
+    }
+
+    function stopAutoPlay() {
+        if(autoPlayInterval) clearInterval(autoPlayInterval);
+    }
+
+    // Iniciar autoplay al cargar
+    startAutoPlay();
+
+    // Detener autoplay si el mouse entra en el slider para lectura
+    document.querySelector('.slider-master').addEventListener('mouseenter', stopAutoPlay);
+    document.querySelector('.slider-master').addEventListener('mouseleave', startAutoPlay);
+
+    // --- DETECTOR DE SCROLL (Activar sección) ---
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.25 }); // Activar cuando el 25% sea visible
+
+    sectionObserver.observe(document.querySelector('.results-vault'));
+
+    // --- LIGHTBOX (Métricas y Rebranding) ---
+    function openLightbox(src) {
+        // Pausar slider
+        stopAutoPlay();
+        const lb = document.getElementById('lightbox');
+        document.getElementById('lb-img').src = src;
+        lb.classList.add('active');
+    }
+    function closeLightbox() { 
+        document.getElementById('lightbox').classList.remove('active'); 
+        // Reanudar slider si no hay clic previo
+        startAutoPlay();
+    }
+</script>
+
+<style>
+    /* 🛰️ RADAR NAV */
+    .radar-nav {
+        position: fixed;
+        top: -80px; left: 0; width: 100%;
+        background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(15px);
+        z-index: 1000;
+        padding: 12px 10%;
+        border-bottom: 1px solid #FF3C00;
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .radar-nav.active { top: 0; }
+    .radar-content { display: flex; justify-content: space-between; align-items: center; }
+    .radar-loc { 
+        font-size: 0.65rem; 
+        letter-spacing: 2px; 
+        color: #FFFFFF; /* Color más claro como pediste */
+        font-weight: 900; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+    }
+    .pulse-green { width: 8px; height: 8px; background: #25D366; border-radius: 50%; box-shadow: 0 0 10px #25D366; animation: pulse 1.5s infinite; }
+    
+    .radar-cta { 
+        color: #fff; 
+        text-decoration: none; 
+        font-family: 'Anton'; 
+        font-size: 0.8rem; 
+        border: 1px solid #FF3C00; 
+        padding: 6px 18px; 
+        transition: 0.3s;
+        border-radius: 2px;
+    }
+    .radar-cta:hover { background: #FF3C00; color: #fff; }
+
+    /* 🎛️ CONTROL ROOM */
+    .control-room {
+        position: relative;
+        min-height: 120vh;
+        background: #020202;
+        padding: 100px 10%;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+
+    .smoke-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(20,20,20,0.2) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .fingerprint-area { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .burn-mark {
+        position: absolute;
+        width: 150px; height: 150px;
+        background: radial-gradient(circle, rgba(255, 60, 0, 0.25) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(25px);
+        transform: translate(-50%, -50%);
+        animation: burnOut 1.8s forwards;
+    }
+    @keyframes burnOut { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.8); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); } }
+
+    .room-container { position: relative; z-index: 10; }
+    .tilted-right { transform: rotate(1.2deg); }
+
+    .warning-tag {
+        background: rgba(255, 0, 0, 0.1);
+        color: #ff4444;
+        display: inline-block;
+        padding: 5px 15px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,0,0,0.2);
+    }
+    .blink { animation: blinker 1s linear infinite; margin-right: 5px; }
+    @keyframes blinker { 50% { opacity: 0; } }
+
+    .impact-title { font-family: 'Anton'; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1; margin-bottom: 50px; color: #fff;}
+    .neon-text-red { color: #FF3C00; text-shadow: 0 0 15px rgba(255, 60, 0, 0.6); }
+
+    /* POWER GRID */
+    .power-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+    .power-card { 
+        background: rgba(255,255,255,0.02); 
+        padding: 40px; 
+        border-radius: 2px; 
+        position: relative; 
+        border: 1px solid rgba(255,255,255,0.03); 
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .switch-ui { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
+    .lever-base { width: 60px; height: 30px; background: #000; border: 1px solid #333; border-radius: 30px; position: relative; }
+    .lever-handle { width: 22px; height: 22px; background: #222; border-radius: 50%; position: absolute; top: 3px; left: 4px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+    .on-state.active-neon .lever-handle { left: 32px; background: #25D366; box-shadow: 0 0 15px #25D366; }
+    .on-state.active-neon { border-color: rgba(37, 211, 102, 0.3); background: rgba(37, 211, 102, 0.02); }
+    .on-state .label { font-family: 'Anton'; color: #25D366; letter-spacing: 1px; }
+
+    .power-card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
+    .power-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+
+    /* Mensajes de bloqueo */
+    .lock-msg {
+        position: absolute;
+        bottom: 15px;
+        left: 40px;
+        font-size: 0.6rem;
+        font-weight: 900;
+        color: #FF3C00;
+        letter-spacing: 1px;
+        opacity: 0;
+        transition: 0.3s;
+    }
+    .lock-msg.show { opacity: 1; transform: translateY(-5px); }
+
+    /* TECH STACK */
+    .tech-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .tech-card { padding: 35px; background: #050505; border-top: 2px solid transparent; transition: 0.4s; }
+    .tech-icon svg { width: 40px; height: 40px; stroke: #333; margin-bottom: 20px; transition: 0.4s; }
+    
+    .neon-border-orange:hover { border-top-color: #FF3C00; background: rgba(255,60,0,0.03); }
+    .neon-border-orange:hover svg { stroke: #FF3C00; filter: drop-shadow(0 0 10px #FF3C00); }
+    .neon-border-blue:hover { border-top-color: #00D1FF; background: rgba(0,209,255,0.03); }
+    .neon-border-blue:hover svg { stroke: #00D1FF; filter: drop-shadow(0 0 10px #00D1FF); }
+    .neon-border-purple:hover { border-top-color: #BD00FF; background: rgba(189,0,255,0.03); }
+    .neon-border-purple:hover svg { stroke: #BD00FF; filter: drop-shadow(0 0 10px #BD00FF); }
+
+    .tech-card h4 { font-family: 'Anton'; color: #fff; margin-bottom: 12px; font-size: 1rem; letter-spacing: 1px; }
+    .status-bar { width: 100%; height: 2px; background: #111; margin-top: 20px; }
+    .status-bar .fill { height: 100%; background: #FF3C00; box-shadow: 0 0 8px #FF3C00; }
+
+    @media (max-width: 800px) {
+        .power-grid { grid-template-columns: 1fr; }
+        .tilted-right { transform: rotate(0.5deg); }
+        .control-room { padding: 80px 8%; }
+        .radar-loc { font-size: 0.55rem; }
+    }
+</style>
+
+<script>
+    // Lógica de los interruptores bloqueados
+    function triggerLocked(type) {
+        const msg = document.getElementById('msg-' + type);
+        msg.classList.add('show');
+        
+        // Efecto visual de "intento fallido"
+        const card = msg.parentElement;
+        card.style.transform = "translateX(5px)";
+        setTimeout(() => card.style.transform = "translateX(-5px)", 50);
+        setTimeout(() => card.style.transform = "translateX(0)", 100);
+
+        setTimeout(() => {
+            msg.classList.remove('show');
+        }, 2000);
+    }
+
+    // Radar Nav Scroll
+    window.addEventListener('scroll', () => {
+        const radar = document.getElementById('radarNav');
+        const trigger = document.querySelector('.control-room').offsetTop;
+        if (window.scrollY > trigger - 300) {
+            radar.classList.add('active');
+        } else {
+            radar.classList.remove('active');
+        }
+    });
+
+    // Efecto Huella Térmica
+    const room = document.querySelector('.control-room');
+    const canvas = document.getElementById('thermalCanvas');
+
+    function createBurn(x, y) {
+        const burn = document.createElement('div');
+        burn.className = 'burn-mark';
+        burn.style.left = x + 'px';
+        burn.style.top = y + 'px';
+        canvas.appendChild(burn);
+        setTimeout(() => burn.remove(), 1800);
+    }
+
+    room.addEventListener('mousemove', (e) => {
+        const rect = room.getBoundingClientRect();
+        createBurn(e.clientX - rect.left, e.clientY - rect.top);
+    });
+
+    room.addEventListener('touchmove', (e) => {
+        const rect = room.getBoundingClientRect();
+        const touch = e.touches[0];
+        createBurn(touch.clientX - rect.left, touch.clientY - rect.top);
+    });
+</script>
+
+    <a href="https://wa.me/573012800024?text=Hola%20sapien%20deseo%20vender%20mas%20y%20recuperar%20la%20rentabilidad%20de%20mi%20negocio%20📈💰" class="wa-float" target="_blank">
+        <div class="wa-badge" id="notif-count">0</div>
+        <svg viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72 1.025 3.69 1.565 5.707 1.566h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <div class="scroll-arrow">
+        <div class="arrow-down"></div>
+    </div>
+
+   <script>
+    // --- EFECTO MÁQUINA DE ESCRIBIR ---
+    const textElement = document.getElementById('typewriter');
+    const strText = textElement.textContent;
+    textElement.textContent = "";
+    let i = 0;
+    function typeEffect() {
+        if (i < strText.length) {
+            textElement.textContent += strText.charAt(i);
+            i++;
+            setTimeout(typeEffect, 100);
+        }
+    }
+    setTimeout(typeEffect, 1000);
+
+    // --- MOTOR DE PERSISTENCIA B2B (Lógica Ajustada a Máx 5) ---
+    const badge = document.getElementById('notif-count') || document.getElementById('waBadge');
+    
+    let state = JSON.parse(localStorage.getItem('rs_badge_state')) || {
+        count: 0,
+        phase: "start",
+        lastUpdate: Date.now()
+    };
+
+    function saveState() {
+        state.lastUpdate = Date.now();
+        localStorage.setItem('rs_badge_state', JSON.stringify(state));
+    }
+
+    function updateWhatsAppBadge() {
+        if (!badge) return;
+        if (state.count > 0) badge.style.opacity = "1";
+        
+        let delay = 15000;
+
+        switch(state.phase) {
+            case "start":
+                // Incrementa solo hasta llegar a 5
+                if (state.count < 5) state.count++;
+                delay = Math.random() * (30000 - 15000) + 15000;
+                if (state.count >= 5) state.phase = "peak";
+                break;
+
+            case "peak":
+                // Pausa de saturación en el tope (4 minutos)
+                delay = 240000; 
+                state.phase = "fluctuation"; 
+                break;
+
+            case "fluctuation":
+                // Fluctúa orgánicamente solo entre 3 y 5
+                const change = Math.random() > 0.5 ? 1 : -1;
+                state.count = Math.max(3, Math.min(5, state.count + change));
+                
+                if (state.count >= 5) {
+                    delay = Math.random() * (180000 - 120000) + 120000;
+                } else {
+                    delay = Math.random() * (90000 - 45000) + 45000;
+                }
+                
+                if (Math.random() > 0.95) state.phase = "cooldown";
+                break;
+
+            case "cooldown":
+                state.count = Math.max(0, state.count - 1);
+                delay = Math.random() * (60000 - 30000) + 30000;
+                if (state.count === 0) state.phase = "start";
+                break;
+        }
+
+        badge.textContent = state.count;
+        
+        // Animación sutil de actualización
+        badge.style.transform = 'scale(1.2)';
+        setTimeout(() => { badge.style.transform = 'scale(1)'; }, 300);
+
+        saveState();
+        setTimeout(updateWhatsAppBadge, delay);
+    }
+
+    if (state.count > 0) {
+        badge.textContent = state.count;
+        badge.style.opacity = "1";
+    }
+
+    setTimeout(updateWhatsAppBadge, 5000);
+</script>
+
+    <section class="rs-reactor-v7" id="nosotros">
+    <svg style="display:none;">
+        <filter id="fire-blur">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+    </svg>
+
+    <canvas id="neuralNetworkV7"></canvas>
+
+    <div class="v7-container">
+        <header class="v7-header">
+            <div class="status-chip">ESTADO: CONEXIÓN_HUMANA_ACTIVA</div>
+            <h2 class="v7-title">EL EQUIPO <span class="v7-underline">SAPIEN</span></h2>
+            <p class="v7-subtitle">
+                Dominamos las tecnologías <strong>Open Source</strong> que impulsan a los referentes mundiales. Su negocio merece el mismo motor, pero con el alma de nuestra tierra.
+            </p>
+        </header>
+
+        <div class="v7-orbit-system">
+            <div class="flame-core">
+                <div class="flame-particle"></div>
+                <div class="flame-particle"></div>
+                <div class="flame-particle"></div>
+                <div class="core-text">RED SAPIEN</div>
+            </div>
+
+            <div class="v7-crew-orbit">
+                <div class="node cata-card" style="--angle: 0deg; --node-color: #FFB800;">
+                    <div class="node-inner">
+                        <img src="Imagenes/Avatar-Ñoña-removebg-preview.webp" alt="Jacqueline">
+                        <div class="node-label">
+                            <span class="role">PROCESOS</span>
+                            <h4>Jacqueline G.</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node cata-card" style="--angle: 90deg; --node-color: #FFB800;">
+                    <div class="node-inner">
+                        <img src="Imagenes/Avatar-Sebastian-removebg-preview.webp" alt="Juan">
+                        <div class="node-label">
+                            <span class="role">ESTRATEGIA</span>
+                            <h4>Juan Gomez</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node cata-card ai-node" style="--angle: 180deg; --node-color: #00F2FF;">
+                    <div class="node-inner">
+                        <img src="Imagenes/Antonella-IA.webp" alt="Antonella">
+                        <div class="node-label">
+                            <span class="role">IA_AUTÓNOMA</span>
+                            <h4 class="text-cyan">Antonella</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node cata-card ceo-node" style="--angle: 270deg; --node-color: #FF3C00;">
+                    <div class="node-inner">
+                        <img src="Imagenes/Avatar-SapienC-removebg-preview.webp" alt="Cristian">
+                        <div class="node-label">
+                            <span class="role">CEO_FOUNDER</span>
+                            <h4 class="text-brasa">Cristian Lopez</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LÍNEA DIVISORIA ANIMADA (V7) -->
+        <div class="v7-divider">
+            <div class="divider-gradient"></div>
+        </div>
+
+        <div class="gastronomy-brands">
+            <div class="brands-info">
+                <h3>REFERENTES DE <span class="text-brasa">ALTA INGENIERÍA</span></h3>
+                <p>Usamos las tecnologías Open Source que escalan imperios:</p>
+            </div>
+            <div class="brands-logos">
+                <div class="brand-item mcd"><span>🍔</span> McDonald's</div>
+                <div class="brand-item michelin"><span>⭐</span> Alta Cocina</div>
+                <div class="brand-item pizza"><span>🍕</span> Domino's Style</div>
+            </div>
+        </div>
+
+        <div class="v7-impact">
+            <div class="impact-card tinto-card">
+                <div class="card-edge"></div>
+                <div class="impact-content">
+                    <div class="impact-icon">☕</div>
+                    <h4>PARA INICIAR...</h4>
+                    <p>Vamos a su negocio y <strong>nos tomamos un tinto</strong> <span id="tintoLocation">(Presencial en Manizales / Tinto virtual si está fuera)</span>. Sin presiones, sin tecnicismos vacíos. Solo dos partes buscando el éxito común.</p>
+                </div>
+            </div>
+
+            <div class="impact-card social-card">
+                <div class="card-edge"></div>
+                <div class="social-icons">
+                    <div class="social-char baby">
+                        <span class="baby-girl">👶🏻🎀</span>
+                    </div>
+                    <div class="social-char dog chihuahua">🐕</div>
+                </div>
+                <div class="impact-content">
+                    <div class="donation-badge">MISIÓN 6% MENSUAL</div>
+                    <p>Donamos el <strong>6% de nuestras ganancias al mes</strong> para proteger niños y rescatar animales (como nuestro valiente Chihuahua) en situación de calle. Su marca también salva vidas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+    :root {
+        --rs-neon: #FF3C00;
+        --rs-bg: #050505;
+        --rs-card: #0D0D0D;
+        --rs-text: #f0f0f0;
+        --rs-gradient: linear-gradient(90deg, #FF3C00, #FF7400, #FF3C00);
+    }
+
+    .footer-wrapper {
+        background: var(--rs-bg);
+        color: var(--rs-text);
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+    }
+
+    /* --- titular derecha (sin mayúsculas) --- */
+    .ticker-header {
+        text-align: right;
+        padding: 50px 4% 15px;
+        width: 100%;
+    }
+    .ticker-header h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(1.8rem, 6vw, 3.5rem);
+        color: #fff;
+        letter-spacing: -1px;
+        line-height: 1;
+        text-transform: lowercase;
+    }
+    .ticker-header span { color: var(--rs-neon); text-shadow: 0 0 20px rgba(255,60,0,0.6); }
+
+    /* --- slider casos de éxito --- */
+    .success-ticker { padding: 10px 0 60px; }
+    .ticker-wrap { 
+        display: flex; 
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+    .ticker-move { 
+        display: flex; 
+        gap: 40px; 
+        animation: ticker-loop 50s linear infinite; 
+        padding: 20px;
+    }
+    .ticker-wrap:hover .ticker-move { animation-play-state: paused; }
+
+    @keyframes ticker-loop {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .recipe-card {
+        flex: 0 0 400px;
+        background: #0a0a0a;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 15px;
+        padding: 35px;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .recipe-card:hover {
+        border-color: var(--rs-neon);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+        transform: translateY(-8px);
+    }
+
+    .recipe-card h4 {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.4rem;
+        color: #fff;
+        margin-bottom: 8px;
+        text-transform: lowercase;
+    }
+    .business-tag {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: var(--rs-neon);
+        display: block;
+        margin-bottom: 15px;
+        text-transform: lowercase;
+    }
+    .recipe-card p { font-size: 0.95rem; line-height: 1.6; color: #777; }
+
+    /* --- mapa satelital robusto (detalles visibles) --- */
+    .map-container {
+        height: 380px; 
+        width: 100%;
+        position: relative;
+        background: #000;
+        border-top: 1px solid #1a1a1a;
+        border-bottom: 1px solid #1a1a1a;
+    }
+    #leaflet-map {
+        height: 100%;
+        width: 100%;
+    }
+    .leaflet-tile-container {
+        filter: saturate(1.1) brightness(0.7) contrast(1.2);
+    }
+
+    /* --- botón web oficial robusto --- */
+    .btn-web-container { margin: 35px 0; }
+    .btn-official-v4 {
+        position: relative;
+        display: inline-block;
+        padding: 22px 55px;
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Anton', sans-serif;
+        font-size: 1.25rem;
+        background: #000;
+        border-radius: 2px;
+        overflow: hidden;
+        transition: 0.4s;
+        border: 2px solid var(--rs-neon);
+        z-index: 1;
+        text-transform: lowercase;
+    }
+    .btn-official-v4::after {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: conic-gradient(from 0deg, transparent, var(--rs-neon), transparent 40%);
+        animation: rotate-glow 3s linear infinite;
+        z-index: -1;
+    }
+    @keyframes rotate-glow { 100% { transform: rotate(360deg); } }
+    .btn-official-v4:hover {
+        background: var(--rs-neon);
+        box-shadow: 0 0 40px rgba(255, 60, 0, 0.5);
+    }
+
+    /* --- player --- */
+    .spotify-mini {
+        background: #080808;
+        border: 1px solid #151515;
+        padding: 18px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        max-width: 330px;
+    }
+    .play-btn {
+        width: 45px; height: 45px;
+        background: var(--rs-neon);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; color: #fff;
+    }
+
+    /* --- footer final --- */
+    .main-footer {
+        padding: 80px 5% 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 50px;
+    }
+    .main-footer h2, .main-footer h5 { text-transform: lowercase; font-family: 'Anton'; }
+
+    .social-icons { display: flex; gap: 25px; margin: 25px 0; }
+    .social-icons a { color: #fff; font-size: 22px; transition: 0.3s; }
+    .social-icons a:hover { color: var(--rs-neon); transform: scale(1.1); }
+
+    /* --- sección legal (términos y privacidad) --- */
+    .legal-links {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .legal-item {
+        color: #444;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: lowercase;
+    }
+    .legal-item:hover { color: var(--rs-neon); }
+    .legal-item i { font-size: 0.7rem; }
+
+    .copyright {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding-top: 60px;
+        font-size: 0.75rem;
+        color: #333;
+        text-transform: lowercase;
+    }
+
+    @media (max-width: 900px) {
+        .main-footer { grid-template-columns: 1fr; text-align: center; }
+        .social-icons, .legal-links { justify-content: center; align-items: center; }
+        .recipe-card { flex: 0 0 320px; }
+    }
+</style>
+
+<div class="footer-wrapper">
+    <div class="ticker-header">
+        <h3>estrategias de <span>éxito real</span></h3>
+    </div>
+
+    <section class="success-ticker">
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <div class="recipe-card">
+                    <h4>El imán de pedidos</h4>
+                    <span class="business-tag">Caso: Salchipotato</span>
+                    <p>"El restaurante usa una estrategia realmente innovadora donde convierte a guardas y recepcionistas de hoteles y oficinas en vendedores de sus platos a través de incentivos. El restaurante deja de esperar y sale a conquistar el sector."</p>
+                </div>
+                <div class="recipe-card">
+                    <h4>Dominio digital directo</h4>
+                    <span class="business-tag">Caso: Ads estratégico</span>
+                    <p>"En pleno pico de inflación 2025, Red Sapien logró para Salchipotato +3.000 mensajes de compra directos. Con un costo de $920 Pesos por lead y cierre del 45%, generamos rentabilidad masiva con menos de $3.000.000 Pesos invertidos."</p>
+                </div>
+               <div class="recipe-card">
+    <h4>Chao al caos operativo</h4>
+    <span class="business-tag">Caso: Burger Hill</span>
+    <p>Analizamos cómo Burger Hill controla el caos implementando <a href="https://www.gloriafood.com/" target="_blank" style="color:#FF3C00; text-decoration: underline; font-weight: 800;">gloria food</a> sin costes. Sustituyeron el desorden por sistemas automatizados; su dueñ@ recupera su paz mental mientras la tecnología despacha y el negocio recibe rentabilidad pura.</p>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="map-container">
+        <div id="leaflet-map"></div>
+    </div>
+
+    <footer class="main-footer">
+        <div>
+            <h2 style="font-size:3.5rem; color:#fff; margin-bottom:10px;">Red Sapien</h2>
+            <p style="color:#555; font-size:1rem; line-height:1.6;">Ingeniería aplicada para que su restaurante empiece a escalar de forma real.</p>
+            
+            <div class="btn-web-container">
+                <a href="https://redsapien.com/" target="_blank" class="btn-official-v4">Nuestra web oficial</a>
+            </div>
+
+            <div class="spotify-mini">
+                <div class="play-btn" id="musicCtrl"><i class="fas fa-play"></i></div>
+                <div style="flex:1">
+                    <span style="display:block; font-size:0.85rem; font-weight:bold; color:#fff; text-transform:lowercase;">Don't go away</span>
+                    <span style="font-size:0.7rem; color:#444; text-transform:lowercase;">Un tema mientras decide si vender y ganar más...</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="padding-top:15px;">
+            <h5 style="color:var(--rs-neon); font-size:1.1rem; margin-bottom:25px;">Conexión</h5>
+            <a href="mailto:redsapiencolombia@proton.me" style="color:#fff; text-decoration:none; display:block; margin-bottom:10px; text-transform:lowercase;">redsapiencolombia@proton.me</a>
+            <a href="tel:+573012800024" style="color:#fff; text-decoration:none; display:block; text-transform:lowercase;">+57 301 280 0024</a>
+            <div class="legal-links" style="margin-top: 20px;">
+    <div class="legal-item" style="color: #fff; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; text-transform: lowercase;">
+        <i class="fas fa-map-marker-alt" style="font-size: 0.8rem; color: var(--rs-neon);"></i> Dirección: Manizales - Caldas, Colombia
+    </div>
+</div>
+            
+            <div class="legal-links">
+                <a href="Descargables/Política de privacidad.pdf" download class="legal-item" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Política de privacidad (pdf)
+                </a>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <h5 style="color:var(--rs-neon); font-size:1.1rem;">Comunidad</h5>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/redsapien/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/people/Red-Sapien/61588508945451/?locale=es_LA" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/redsapien" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            Red Sapien © 2026 — Ingeniería de éxito gastronómico para Colombia y el mundo.
+        </div>
+    </footer>
+</div>
+
+<audio id="rsAudio" loop>
+    <source src="Audio/2000s.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const map = L.map('leaflet-map', {
+        zoomControl: false,
+        scrollWheelZoom: false,
+        dragging: true,
+        attributionControl: false
+    }).setView([15, -75], 4);
+
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'esri'
+    }).addTo(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png').addTo(map);
+
+    const rsPin = L.divIcon({
+        className: 'rs-marker',
+        html: `<div style="background:var(--rs-neon); width:14px; height:14px; border-radius:50%; box-shadow: 0 0 20px var(--rs-neon); border:2px solid #fff;"></div>`
+    });
+
+    L.marker([5.067, -75.517], {icon: rsPin}).addTo(map); 
+    L.marker([6.244, -75.581], {icon: rsPin}).addTo(map); 
+    L.marker([10.963, -74.796], {icon: rsPin}).addTo(map); 
+
+    let animated = false;
+    const observer = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && !animated) {
+            setTimeout(() => {
+                map.flyTo([8.0, -74.5], 6, {
+                    animate: true,
+                    duration: 3,
+                    easeLinearity: 0.1
+                });
+            }, 200);
+            animated = true;
+        }
+    }, { threshold: 0.5 });
+    observer.observe(document.getElementById('leaflet-map'));
+
+    const audio = document.getElementById('rsAudio');
+    const musicBtn = document.getElementById('musicCtrl');
+    audio.volume = 0.3;
+
+    musicBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            audio.pause();
+            musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
+</script>
+
+<style>
+/* --- CONFIGURACIÓN MAESTRA V7 --- */
+:root { --brasa: #FF3C00; --cyan: #00F2FF; --yellow: #FFB800; --chihuahua-gold: #E1AD01; }
+
+.rs-reactor-v7 {
+    background: #000;
+    min-height: 100vh;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 40px;
+}
+
+#neuralNetworkV7 { position: absolute; inset: 0; opacity: 0.4; pointer-events: none; }
+
+.v7-container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 5; }
+
+/* --- HEADER & SUBRAYADO --- */
+.v7-header { text-align: center; margin-bottom: 80px; }
+.v7-title { font-family: 'Anton', sans-serif; font-size: clamp(3rem, 10vw, 6.5rem); text-transform: uppercase; }
+.v7-underline {
+    position: relative; color: var(--brasa);
+}
+.v7-underline::after {
+    content: ''; position: absolute; bottom: 5px; left: 0;
+    width: 100%; height: 8px;
+    background: var(--brasa);
+    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+    transform: scaleX(0); transform-origin: left;
+    animation: draw-line 2s forwards ease-in-out 1s;
+}
+@keyframes draw-line { to { transform: scaleX(1); } }
+
+/* --- LLAMARADA CENTRAL --- */
+.flame-core {
+    position: absolute; width: 140px; height: 140px;
+    display: flex; align-items: center; justify-content: center;
+    filter: url(#fire-blur);
+}
+.flame-particle {
+    position: absolute; bottom: 20%; width: 60px; height: 60px;
+    background: var(--brasa); border-radius: 50%;
+    filter: blur(10px); animation: burn 2s infinite ease-in; opacity: 0.8;
+}
+.flame-particle:nth-child(2) { background: #ffae00; width: 40px; animation-delay: 0.5s; }
+.flame-particle:nth-child(3) { background: #fff; width: 20px; animation-delay: 0.8s; }
+
+@keyframes burn {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+}
+
+.core-text { 
+    position: relative; z-index: 10; font-family: 'Anton', sans-serif; 
+    font-size: 1rem; text-shadow: 0 0 10px #000;
+}
+
+/* --- ÓRBITA PERFECTA Y RESPONSIVA --- */
+.v7-orbit-system {
+    height: 600px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    margin: 100px 0;
+}
+
+.v7-crew-orbit {
+    width: 100%; height: 100%;
+    position: relative;
+    animation: rotate-system 40s linear infinite;
+}
+
+.node {
+    position: absolute; top: 50%; left: 50%;
+    --dist: clamp(150px, 25vw, 320px);
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--dist)) rotate(calc(-1 * var(--angle)));
+}
+
+.cata-card {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 15px; border-radius: 15px 40px 15px 40px;
+    backdrop-filter: blur(10px);
+    width: 200px; transition: 0.4s;
+}
+
+/* V7: NEON SHADOW DINÁMICO */
+.cata-card:hover { 
+    border-color: var(--node-color); 
+    box-shadow: 0 0 30px var(--node-color);
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(var(--dist) + 20px)) rotate(calc(-1 * var(--angle))) scale(1.1);
+}
+
+.node-inner img { 
+    width: 100%; height: 120px; object-fit: cover; 
+    border-radius: 10px 30px 10px 30px; margin-bottom: 10px;
+    filter: grayscale(1) drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    transition: 0.5s;
+}
+.node:hover img { filter: grayscale(0) drop-shadow(0 5px 15px rgba(0,0,0,0.7)); }
+
+@keyframes rotate-system { 
+    from { transform: rotate(0deg); } to { transform: rotate(360deg); } 
+}
+
+/* --- V7: DIVISOR ANIMADO --- */
+.v7-divider {
+    margin: 60px 0 40px;
+    width: 100%;
+    height: 1px;
+    position: relative;
+    overflow: hidden;
+}
+.divider-gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--brasa), var(--cyan), transparent);
+    animation: slide-glow 3s linear infinite;
+}
+@keyframes slide-glow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* --- IMPACTO SOCIAL V7 --- */
+.v7-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
+.impact-card {
+    background: #0a0a0a; border-radius: 30px; padding: 40px;
+    position: relative; border: 1px solid rgba(255,255,255,0.05);
+}
+.tinto-card { border-left: 5px solid var(--brasa); }
+.social-card { border-left: 5px solid var(--cyan); }
+
+/* V7: TINTO VIRTUAL/PRESENCIAL */
+#tintoLocation {
+    font-size: 0.85rem;
+    color: var(--cyan);
+    font-weight: 600;
+    display: inline-block;
+    background: rgba(0,242,255,0.1);
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-top: 8px;
+}
+
+.social-icons { display: flex; gap: 20px; font-size: 3.5rem; margin-bottom: 20px; align-items: center; }
+
+/* V7: BEBÉ NIÑA CON ESTILO */
+.baby-girl {
+    display: inline-block;
+    font-size: 3rem;
+    filter: drop-shadow(0 0 8px #ff69b4);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* V7: CHIHUAHUA CON COLOR DORADO Y LATIDO */
+.chihuahua {
+    display: inline-block;
+    font-size: 3rem;
+    color: var(--chihuahua-gold);
+    filter: drop-shadow(0 0 6px var(--chihuahua-gold));
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.social-char { animation: breathe 3s infinite ease-in-out; }
+@keyframes breathe { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.1); filter: brightness(1.3); } }
+
+/* --- MARCAS --- */
+.gastronomy-brands { margin: 40px 0 0; text-align: center; }
+.brands-logos { display: flex; justify-content: center; gap: 50px; margin-top: 30px; flex-wrap: wrap; }
+.brand-item { font-family: 'Anton', sans-serif; font-size: 2rem; opacity: 0.4; transition: 0.5s; }
+.brand-item:hover { opacity: 1; transform: translateY(-5px); color: var(--brasa); }
+
+/* --- RESPONSIVO MÓVIL --- */
+@media (max-width: 768px) {
+    .v7-orbit-system { height: 450px; margin: 40px 0; }
+    .node { --dist: 140px; }
+    .cata-card { width: 140px; padding: 10px; font-size: 0.8rem; }
+    .node-inner img { height: 80px; }
+    .v7-impact { grid-template-columns: 1fr; }
+    .v7-title { font-size: 3.5rem; }
+    #tintoLocation { font-size: 0.7rem; display: block; text-align: center; margin-top: 12px; }
+}
+</style>
+
+<script>
+/* --- ENGINE NEURONAL V7 (CON RAYOS ELÉCTRICOS) --- */
+const canvasV7 = document.getElementById('neuralNetworkV7');
+const ctxV7 = canvasV7.getContext('2d');
+let particlesV7 = [];
+let lightningStrikes = [];
+let lastLightningTime = 0;
+let lightningInterval = 3000; // 3 segundos entre rayos
+
+function initV7() {
+    canvasV7.width = window.innerWidth;
+    canvasV7.height = window.innerHeight;
+    particlesV7 = [];
+    for(let i = 0; i < 60; i++) {
+        particlesV7.push({
+            x: Math.random() * canvasV7.width,
+            y: Math.random() * canvasV7.height,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3
+        });
+    }
+}
+
+// Función para generar un rayo desde el centro hacia un nodo aleatorio
+function generateLightning() {
+    const nodes = document.querySelectorAll('.node');
+    if(nodes.length === 0) return;
+    
+    // Obtener posición del centro (flame-core)
+    const flameCore = document.querySelector('.flame-core');
+    const coreRect = flameCore.getBoundingClientRect();
+    const coreX = coreRect.left + coreRect.width / 2;
+    const coreY = coreRect.top + coreRect.height / 2;
+    
+    // Elegir nodo aleatorio
+    const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+    const nodeRect = randomNode.getBoundingClientRect();
+    const nodeX = nodeRect.left + nodeRect.width / 2;
+    const nodeY = nodeRect.top + nodeRect.height / 2;
+    
+    // Calcular coordenadas relativas al canvas
+    const canvasRect = canvasV7.getBoundingClientRect();
+    const startX = coreX - canvasRect.left;
+    const startY = coreY - canvasRect.top;
+    const endX = nodeX - canvasRect.left;
+    const endY = nodeY - canvasRect.top;
+    
+    // Crear puntos intermedios para efecto de rayo
+    const points = [{x: startX, y: startY}];
+    const segments = 8;
+    for(let i = 1; i <= segments; i++) {
+        const t = i / segments;
+        let x = startX + (endX - startX) * t;
+        let y = startY + (endY - startY) * t;
+        // Desviación aleatoria
+        x += (Math.random() - 0.5) * 25;
+        y += (Math.random() - 0.5) * 25;
+        points.push({x, y});
+    }
+    points.push({x: endX, y: endY});
+    
+    lightningStrikes.push({
+        points: points,
+        opacity: 0.9,
+        life: 0.2 // 200ms de vida
+    });
+}
+
+function animateV7() {
+    ctxV7.clearRect(0, 0, canvasV7.width, canvasV7.height);
+    
+    // Dibujar partículas (red neuronal base)
+    particlesV7.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.x < 0 || p.x > canvasV7.width) p.vx *= -1;
+        if(p.y < 0 || p.y > canvasV7.height) p.vy *= -1;
+        
+        ctxV7.fillStyle = 'rgba(255, 60, 0, 0.2)';
+        ctxV7.beginPath();
+        ctxV7.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctxV7.fill();
+        
+        // Conectar partículas cercanas (red neuronal)
+        particlesV7.forEach(p2 => {
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.hypot(dx, dy);
+            if(dist < 100) {
+                ctxV7.beginPath();
+                ctxV7.strokeStyle = `rgba(255, 60, 0, ${0.1 * (1 - dist/100)})`;
+                ctxV7.lineWidth = 0.5;
+                ctxV7.moveTo(p.x, p.y);
+                ctxV7.lineTo(p2.x, p2.y);
+                ctxV7.stroke();
+            }
+        });
+    });
+    
+    // Dibujar rayos eléctricos
+    for(let i = lightningStrikes.length-1; i >= 0; i--) {
+        const strike = lightningStrikes[i];
+        strike.life -= 0.016; // ~60fps
+        strike.opacity = Math.min(0.9, strike.life * 4.5);
+        
+        if(strike.life <= 0) {
+            lightningStrikes.splice(i, 1);
+            continue;
+        }
+        
+        ctxV7.beginPath();
+        ctxV7.strokeStyle = `rgba(0, 242, 255, ${strike.opacity * 0.8})`;
+        ctxV7.lineWidth = 3;
+        ctxV7.shadowBlur = 8;
+        ctxV7.shadowColor = '#00F2FF';
+        
+        for(let j = 0; j < strike.points.length - 1; j++) {
+            ctxV7.beginPath();
+            ctxV7.moveTo(strike.points[j].x, strike.points[j].y);
+            ctxV7.lineTo(strike.points[j+1].x, strike.points[j+1].y);
+            ctxV7.stroke();
+            
+            // Trazo interno más brillante
+            ctxV7.beginPath();
+            ctxV7.strokeStyle = `rgba(255, 255, 255, ${strike.opacity * 0.6})`;
+            ctxV7.lineWidth = 1.5;
+            ctxV7.moveTo(strike.points[j].x, strike.points[j].y);
+            ctxV7.lineTo(strike.points[j+1].x, strike.points[j+1].y);
+            ctxV7.stroke();
+        }
+        ctxV7.shadowBlur = 0;
+    }
+    
+    requestAnimationFrame(animateV7);
+}
+
+// Timer para rayos aleatorios
+setInterval(() => {
+    const now = Date.now();
+    if(now - lastLightningTime >= lightningInterval) {
+        generateLightning();
+        lastLightningTime = now;
+        // Variar intervalo entre 2.5 y 4 segundos
+        lightningInterval = 2500 + Math.random() * 1500;
+    }
+}, 500);
+
+window.addEventListener('resize', () => {
+    initV7();
+});
+initV7();
+animateV7();
+
+/* --- COMPENSACIÓN DE ROTACIÓN (100% PRESERVADA) --- */
+function stabilizeTextV7() {
+    const system = document.querySelector('.v7-crew-orbit');
+    const nodes = document.querySelectorAll('.node');
+    
+    if(!system) return;
+    
+    const style = window.getComputedStyle(system);
+    const transform = style.transform;
+    
+    if(transform !== 'none') {
+        const matrix = new DOMMatrix(transform);
+        const angle = Math.atan2(matrix.b, matrix.a) * (180 / Math.PI);
+        
+        nodes.forEach(node => {
+            const inner = node.querySelector('.node-inner');
+            if(inner) {
+                inner.style.transform = `rotate(${-angle}deg)`;
+            }
+        });
+    }
+    requestAnimationFrame(stabilizeTextV7);
+}
+
+// Inicializar estabilización cuando el DOM esté listo
+if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(stabilizeTextV7, 100);
+    });
+} else {
+    setTimeout(stabilizeTextV7, 100);
+}
+
+// V7: Localización del tinto (Manizales vs resto)
+function updateTintoLocation() {
+    const tintoSpan = document.getElementById('tintoLocation');
+    if(!tintoSpan) return;
+    
+    // Simulación: podemos detectar ciudad aproximada por IP o usar geolocalización
+    // Por ahora, mostramos versión dinámica basada en zona horaria de Colombia
+    // Como estamos en Manizales (UTC-5), asumimos que si el cliente está en CO es presencial
+    // Esta función puede mejorarse con una API real
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const isColombia = userTimeZone.includes('America/Bogota') || userTimeZone.includes('America/Guayaquil');
+    
+    if(isColombia) {
+        tintoSpan.innerHTML = '☕ Si está en Manizales, lo tomamos presencial. Si está fuera, es un "Tinto Virtual" con videollamada.';
+    } else {
+        tintoSpan.innerHTML = '☕ Tinto Virtual con videollamada (si está en Manizales, podemos agendar presencial).';
+    }
+}
+updateTintoLocation();
+</script>
+
+</body>
+</html>
