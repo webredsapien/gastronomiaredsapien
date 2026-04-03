@@ -7,7 +7,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Red Sapien Gastro | + Pedidos y Reservas</title>
     
+    <!-- Preconnect para optimización de fuentes y recursos externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/png" href="Imagenes/favicon.ico">
@@ -15,9 +18,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://restaurantes.redsapien.com/">
 
-<meta property="og:title" content="Independice su marca de las comisiones de Rappi ✂️🧡">
+<meta property="og:title" content="Libere su restaurante de Rappi y gane más ✂️🧡">
 
-<meta property="og:description" content="¿Cansad@ de entregar su utilidad? Active su propio canal de ventas por WhatsApp hoy. Sin intermediarios, sin contratos y 100% de la ganancia para usted. 💰🔥">
+<meta property="og:description" content="Traemos pedidos reales a su restaurante a través de redes y desarrollo web personalizado. Somos su startup y aliad@ tecnológic@. 🚀 🥡">
 
 <meta property="og:image" content="https://raw.githubusercontent.com/webredsapien/gastronomiaredsapien/63e1a33b8f0ee6de34c243e8ec42577c5839f33a/Imagenes/Preview-Link.webp">
 <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/webredsapien/gastronomiaredsapien/63e1a33b8f0ee6de34c243e8ec42577c5839f33a/Imagenes/Preview-Link.webp">
@@ -32,7 +35,13 @@
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+
+// Comando de invisibilidad inicial: Carga el script pero mantiene el widget oculto
+Tawk_API.onLoad = function(){
+    Tawk_API.hideWidget();
+};
+
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
@@ -41,8 +50,35 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
+
+// Temporizador de Activación: Muestra a Antonella tras 39 segundos
+setTimeout(function(){
+    if(typeof Tawk_API !== 'undefined' && Tawk_API.showWidget){
+        Tawk_API.showWidget();
+    }
+}, 39000); 
 </script>
 <!--End of Tawk.to Script-->
+
+<!-- ================================================== -->
+<!-- ⚡ ZONA DE ANALÍTICA - MICROSOFT CLARITY & GA4 ⚡ -->
+<!-- ================================================== -->
+<!-- 
+    INSTRUCCIONES PARA INTEGRACIÓN:
+    
+    1. MICROSOFT CLARITY:
+       - Reemplazar 'TU_CLARITY_ID' con su ID real
+       - Código completo disponible en: https://clarity.microsoft.com/
+    
+    2. GOOGLE ANALYTICS 4 (GA4):
+       - Reemplazar 'G-XXXXXXXXXX' con su ID de medición
+       - Código completo disponible en: https://analytics.google.com/
+    
+    Copie y pegue los códigos respectivos en esta zona, 
+    justo antes de la etiqueta de cierre </head>.
+-->
+<!-- ================================================== -->
+
     
     <style>
         :root {
@@ -155,7 +191,7 @@ s0.parentNode.insertBefore(s1,s0);
     transform: rotate(-1.2deg);
     position: relative;
     z-index: 5;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
         .logo-sapien {
@@ -299,36 +335,37 @@ s0.parentNode.insertBefore(s1,s0);
         @keyframes bounce { 0%, 100% { transform: rotate(45deg) translate(0,0); } 50% { transform: rotate(45deg) translate(5px,5px); } }
 
        @media (max-width: 600px) {
-    .main-engine { padding: 80px 8% 100px; transform: rotate(-0.5deg); margin-bottom: 10px; }
+    .main-engine { padding: 80px 8% 100px; transform: rotate(-0.5deg); margin-bottom: 20px; }
     .hero-title { font-size: 2.6rem; }
     .wa-float { width: 60px; height: 60px; }
 }
     </style>
 </head>
+
 <body>
 
     <div class="bg-overlay"></div>
 
    <div class="flame-slider">
         <div class="slider-track">
-            <div class="item"><b class="sutil-icon">⤿</b> Pedidos directos a su WhatsApp</div>
-            <div class="item"><b class="sutil-icon">⊙</b> Más reservas directas</div>
-            <div class="item"><b class="sutil-icon">✦</b> Cero likes vanidosos, 100% ventas reales</div>
-            <div class="item"><b class="sutil-icon">⌖</b> Dominio total de su zona</div>
-            <div class="item"><b class="sutil-icon">⌬</b> Usted recupera el 100% de su margen</div>
-            
-            <div class="item"><b class="sutil-icon">⤿</b> Pedidos directos a su WhatsApp</div>
-            <div class="item"><b class="sutil-icon">⊙</b> Más reservas directas</div>
-            <div class="item"><b class="sutil-icon">✦</b> Cero likes vanidosos, 100% ventas reales</div>
-            <div class="item"><b class="sutil-icon">⌖</b> Dominio total de su zona</div>
-            <div class="item"><b class="sutil-icon">⌬</b> Usted recupera el 100% de su margen</div>
+    <div class="item"><b class="sutil-icon">☇</b> Su marca vende sola, sin pagar intermediarios</div>
+    <div class="item"><b class="sutil-icon">∞</b> Llene su local con clientes que vuelven siempre</div>
+    <div class="item"><b class="sutil-icon">✧</b> Dígale adiós a los "me gusta" y reciba pedidos de verdad</div>
+    <div class="item"><b class="sutil-icon">⦿</b> Sea el referente que todos eligen en su zona</div>
+    <div class="item"><b class="sutil-icon">⬡</b> La plata de su esfuerzo se queda en su negocio</div>
+    
+    <div class="item"><b class="sutil-icon">☇</b> Su marca vende sola, sin pagar intermediarios</div>
+    <div class="item"><b class="sutil-icon">∞</b> Llene su local con clientes que vuelven siempre</div>
+    <div class="item"><b class="sutil-icon">✧</b> Dígale adiós a los "me gusta" y reciba pedidos de verdad</div>
+    <div class="item"><b class="sutil-icon">⦿</b> Sea el referente que todos eligen en su zona</div>
+    <div class="item"><b class="sutil-icon">⬡</b> La plata de su esfuerzo se queda en su negocio</div>
 
-            <div class="item"><b class="sutil-icon">⤿</b> Pedidos directos a su WhatsApp</div>
-            <div class="item"><b class="sutil-icon">⊙</b> Más reservas directas</div>
-            <div class="item"><b class="sutil-icon">✦</b> Cero likes vanidosos, 100% ventas reales</div>
-            <div class="item"><b class="sutil-icon">⌖</b> Dominio total de su zona</div>
-            <div class="item"><b class="sutil-icon">⌬</b> Usted recupera el 100% de su margen</div>
-        </div>
+    <div class="item"><b class="sutil-icon">☇</b> Su marca vende sola, sin pagar intermediarios</div>
+    <div class="item"><b class="sutil-icon">∞</b> Llene su local con clientes que vuelven siempre</div>
+    <div class="item"><b class="sutil-icon">✧</b> Dígale adiós a los "me gusta" y reciba pedidos de verdad</div>
+    <div class="item"><b class="sutil-icon">⦿</b> Sea el referente que todos eligen en su zona</div>
+    <div class="item"><b class="sutil-icon">⬡</b> La plata de su esfuerzo se queda en su negocio</div>
+</div>
     </div>
 
     <style>
@@ -357,13 +394,13 @@ s0.parentNode.insertBefore(s1,s0);
     </div>
 
     <main class="main-engine">
-        <img src="Imagenes/Logo-Red-Sapien.webp" alt="Red Sapien" class="logo-sapien">
+        <img src="Imagenes/Logo-Red-Sapien.webp" alt="Red Sapien" class="logo-sapien" loading="eager">
         <h1 class="hero-title" id="typewriter">¿Dueñ@ de su margen?</h1>
         <p class="hero-copy">
     Deje de pagar el 30% a <span class="rappi-style">Rappi</span>. 
-    Creamos su propio sistema de pedidos directo a WhatsApp para que usted tome el control y venda más hoy mismo.
+    Creamos su propio ecosistema de pedidos directo a WhatsApp para que usted tome el control y venda más hoy mismo.
 </p>
-      <a href="https://wa.me/573012800024?text=👋%20Hola%20Sapien%2C%20vengo%20de%20la%20web.%20Quiero%20la%20AUDITORÍA%20GRATIS%20ahora%20mismo%20para%20mi%20restaurante%20🔥" class="btn-layers" target="_blank">
+      <a href="https://wa.me/573012800024?text=👋%20Hola%20Sapien%2C%20vengo%20de%20la%20web.%20Quiero%20la%20AUDITORÍA%20GRATIS%20ahora%20mismo%20para%20mi%20restaurante%20🔥" class="btn-layers" target="_blank" rel="noopener noreferrer">
     AUDITORÍA GRATIS AHORA
 </a>
     </main>
@@ -374,7 +411,7 @@ s0.parentNode.insertBefore(s1,s0);
             <span class="pulse-green"></span>
             MANIZALES • EJE CAFETERO • MEDELLÍN • COLOMBIA
         </div>
-        <a href="https://wa.me/573012800024?text=Hola%20sapien%20deseo%20reclamar%20el%20control%20de%20mi%20marca%20✊🔥" class="radar-cta">RECLAMAR CONTROL</a>
+        <a href="https://wa.me/573012800024?text=Hola%20sapien%20deseo%20reclamar%20el%20control%20de%20mi%20marca%20✊🔥" class="radar-cta" target="_blank" rel="noopener noreferrer">RECLAMAR CONTROL</a>
     </div>
 </nav>
 
@@ -418,19 +455,17 @@ s0.parentNode.insertBefore(s1,s0);
                 <div class="tech-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 </div>
-                <h4>Pedidos directo a WhatsApp</h4>
-                <p>Sitio web con IA integrada para optimizar tiempos. No es solo una pagina, es su cajer@ 24/7.</p>
+                <h4>Web de pedidos (Cero caos)</h4>
+                <p>Página de domicilios personalizada con IA 24/7.</p>
                 <div class="status-bar"><div class="fill" style="width: 95%"></div></div>
             </div>
-
-            
 
             <div class="tech-card neon-border-purple">
                 <div class="tech-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
                 </div>
                 <h4>Facebook Ads + Pixel</h4>
-                <p>Campañas con Pixel conectado. Sabemos quién tiene hambre y se lo mostramos.</p>
+                <p>Campaña optimizada. Sabemos quién tiene hambre y se lo mostramos.</p>
                 <div class="status-bar"><div class="fill" style="width: 91%"></div></div>
             </div>
             <div class="tech-card neon-border-blue">
@@ -438,7 +473,7 @@ s0.parentNode.insertBefore(s1,s0);
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20z"/><path d="M2 12h20"/></svg>
                 </div>
                 <h4>Google Local & SEO</h4>
-                <p>Dominio en Manizales y Antioquia. Logramos que le encuentren antes que a la competencia.</p>
+                <p>Logramos que le encuentren antes que a la competencia.</p>
                 <div class="status-bar"><div class="fill" style="width: 88%"></div></div>
             </div>
         </div>
@@ -490,21 +525,20 @@ s0.parentNode.insertBefore(s1,s0);
                         <div class="case-info-top"><h3>Salchipotato Manizales</h3></div>
                         <div class="case-content">
                             <div class="case-visuals">
-                                <div class="frame-pc" onclick="openLightbox('https://redsapien.com/wp-content/uploads/2026/03/Resultados-Ads-Campana.webp')">
+                                <div class="frame-pc">
                                     <div class="pc-screen">
-                                        <img src="Imagenes/Resultados-Ads-Campaña.webp" alt="Métricas">
-                                        <div class="click-hint">VER MÉTRICAS 🔍</div>
+                                        <img src="Imagenes/Resultados-Ads-Campana.webp" alt="Métricas de campaña Salchipotato" loading="lazy">
                                     </div>
                                     <div class="pc-base"></div>
                                 </div>
                                 <div class="frame-mobile">
-                                    <div class="mobile-screen"><img src="Imagenes/debastador-food.webp" alt="Mobile"></div>
+                                    <div class="mobile-screen"><img src="Imagenes/debastador-food.webp" alt="Vista móvil Salchipotato" loading="lazy"></div>
                                 </div>
                             </div>
                             <div class="case-info">
                                 <div class="badge-status">DOMINIO LOCAL</div>
                                 <p>Eficiencia total en pauta digital. Capturamos la demanda en su ciudad y la enviamos directo a su WhatsApp sin intermediarios.</p>
-                                <a href="https://devastador.redsapien.com/" target="_blank" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
+                                <a href="https://devastador.redsapien.com/" target="_blank" rel="noopener noreferrer" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
                             </div>
                         </div>
                     </div>
@@ -514,12 +548,12 @@ s0.parentNode.insertBefore(s1,s0);
                         <div class="case-content">
                             <div class="case-visuals">
                                 <div class="frame-pc">
-                                    <div class="pc-screen"><img src="Imagenes/La-plancha-Reseñas.webp" alt="Reseñas"></div>
+                                    <div class="pc-screen"><img src="Imagenes/La-plancha-Reseñas.webp" alt="Reseñas La Plancha" loading="lazy"></div>
                                     <div class="pc-base"></div>
                                 </div>
                                 <div class="frame-mobile" onclick="openLightbox('https://redsapien.com/wp-content/uploads/2026/03/Vista-previa-la-plancha-web-dayro-moreno.jpg')">
                                     <div class="mobile-screen">
-                                        <img src="Imagenes/Vista-previa-la-plancha-web-dayro-moreno.webp" alt="Dayro">
+                                        <img src="Imagenes/Vista-previa-la-plancha-web-dayro-moreno.webp" alt="Rebranding La Plancha" loading="lazy">
                                         <div class="click-hint">VER REBRANDING 🔍</div>
                                     </div>
                                 </div>
@@ -532,7 +566,7 @@ s0.parentNode.insertBefore(s1,s0);
                                     <li>✓ IA integrada 24/7</li>
                                     <li>✓ Autoridad con figuras públicas</li>
                                 </ul>
-                                <a href="https://laplanchamanizales.redsapien.com/" target="_blank" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
+                                <a href="https://laplanchamanizales.redsapien.com/" target="_blank" rel="noopener noreferrer" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
                             </div>
                         </div>
                     </div>
@@ -541,13 +575,13 @@ s0.parentNode.insertBefore(s1,s0);
                         <div class="case-info-top"><h3>Señor Medrano</h3></div>
                         <div class="case-content">
                             <div class="case-visuals stack-mode">
-                                <div class="frame-pc layer-1"><div class="pc-screen"><img src="Imagenes/Medrano-web-reservas.webp" alt="Medrano Reservas"></div><div class="pc-base"></div></div>
-                                <div class="frame-pc layer-2"><div class="pc-screen"><img src="Imagenes/Medrano-web.webp" alt="Pedidos Medrano"></div><div class="pc-base"></div></div>
+                                <div class="frame-pc layer-1"><div class="pc-screen"><img src="Imagenes/Medrano-web-reservas.webp" alt="Reservas Medrano" loading="lazy"></div><div class="pc-base"></div></div>
+                                <div class="frame-pc layer-2"><div class="pc-screen"><img src="Imagenes/Medrano-web.webp" alt="Pedidos Medrano" loading="lazy"></div><div class="pc-base"></div></div>
                             </div>
                             <div class="case-info">
                                 <div class="badge-status">ALTA RENTABILIDAD</div>
                                 <p>Arquitectura dual avanzada. Separamos reservas premium de pedidos rápidos para optimizar tiempos y facturación.</p>
-                                <a href="https://srmedrano.co/" target="_blank" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
+                                <a href="https://srmedrano.co/" target="_blank" rel="noopener noreferrer" class="btn-live">VER MÁQUINA DE VENTAS ⚙️</a>
                             </div>
                         </div>
                     </div>
@@ -557,7 +591,7 @@ s0.parentNode.insertBefore(s1,s0);
         </div>
     </div>
 
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()"><span class="close-lb">&times;</span><img id="lb-img" src=""></div>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()"><span class="close-lb">&times;</span><img id="lb-img" src="" alt="Vista ampliada"></div>
 </section>
 
 <section class="pricing-engine" id="oferta">
@@ -577,16 +611,13 @@ s0.parentNode.insertBefore(s1,s0);
             <h2 class="p-title">¿BUSCA LIKES? <br><span class="text-brasa">MEJOR LE TRAEMOS VENTAS DIRECTO AL WHATSAPP.</span></h2>
             
             <div class="p-lead-box">
-               <p>
-    ¿Ya trabaja con agencia o marketer@? ¡Qué nota! Pero los likes no pagan cuentas. 
-    Convertimos ese <span style="color:#FF3C00; text-decoration: underline;"><a href="https://es.wikipedia.org/wiki/Pornograf%C3%ADa_alimentaria" target="_blank" style="color:#FF3C00; text-decoration: underline; font-weight: 800;">foodporn</a></span> 
-    en más pedidos. No los reemplazamos, hacemos que su trabajo por fin le dé plata. 
-    <strong>Aquí lo que usted recibe es rentabilidad pura.</strong>
+              <p>
+¿Tiene agencia? ¡Excelente! Pero los likes no pagan cuentas. Convertimos su <a href="https://es.wikipedia.org/wiki/Pornograf%C3%ADa_alimentaria" target="_blank" rel="noopener noreferrer" style="color:#FF3C00; text-decoration: underline; font-weight: 800;">foodporn</a> en pedidos reales. <strong>Obtenga rentabilidad pura.</strong>
 </p>
                 
                 <div class="trust-bar-neon">
                     <span class="pulse-green">●</span>
-                    <p><strong>Garantía Única:</strong> Nada de pagos inciertos por adelantado. Usted solo nos paga cuando su ecosistema esté rodando.</p>
+                    <p><strong>Garantía única:</strong> Nada de pagos inciertos por adelantado. Usted solo nos paga cuando su ecosistema esté rodando.</p>
                 </div>
             </div>
         </header>
@@ -610,7 +641,7 @@ s0.parentNode.insertBefore(s1,s0);
                     <div class="card-side-right">
                         <div class="services-list">
                             <div class="service-item">
-                                <strong class="neon-text">🌐 Web Personalizada + IA:</strong>
+                                <strong class="neon-text">🌐 Web personalizada + IA:</strong>
                                 <p>Carga ultra rápida. Pedidos directo a su WhatsApp.</p>
                             </div>
                             <div class="service-item">
@@ -630,10 +661,10 @@ s0.parentNode.insertBefore(s1,s0);
 
                     <div class="card-footer-mobile">
                         <div class="fuel-box">
-                            <strong>⛽ Inversión Diaria (Nequi):</strong>
+                            <strong>⛽ Inversión diaria (Nequi):</strong>
                             <p>Cargue <strong>13.000 Pesos diarios</strong> a Facebook. La campaña rueda sola.</p>
                         </div>
-                        <a href="https://wa.me/573012800024?text=Hola%20sapien%20quiero%20el%20plan%20pago%20unico%20sin%20cuotas%20y%20control%20total%20🚀" class="btn-action b-brasa">
+                        <a href="https://wa.me/573012800024?text=Hola%20sapien%20quiero%20el%20plan%20pago%20unico%20sin%20cuotas%20y%20control%20total%20🚀" class="btn-action b-brasa" target="_blank" rel="noopener noreferrer">
                             Encender mi máquina
                         </a>
                     </div>
@@ -646,7 +677,7 @@ s0.parentNode.insertBefore(s1,s0);
                         <div class="inner-ribbon">EL FAVORITO / TÚ MANDAS, CANCELA CUANDO QUIERAS</div>
                         <span class="card-tag tag-brasa">PILOTO EXPERTO INCLUIDO</span>
                         <div class="plan-head">
-                            <h3>Máquina <br><span class="highlight-brasa">"En Automático"</span></h3>
+                            <h3>Máquina <br><span class="highlight-brasa">"En automático"</span></h3>
                             <div class="price-display">
                                 <span class="amount">396.000</span>
                                 <div class="price-stack">
@@ -661,7 +692,7 @@ s0.parentNode.insertBefore(s1,s0);
                     <div class="card-side-right">
                         <div class="services-list">
                             <div class="service-item">
-                                <strong class="neon-text">🏎️ Todo el Plan Pro + Gestión:</strong>
+                                <strong class="neon-text">🏎️ Todo el plan pro + gestión:</strong>
                                 <p>Web, Meta y Maps operados al 100% por nosotros.</p>
                             </div>
                             <div class="service-item">
@@ -669,7 +700,7 @@ s0.parentNode.insertBefore(s1,s0);
                                 <p>Atención inteligente que responde reseñas en Google.</p>
                             </div>
                             <div class="service-item">
-                                <strong class="neon-text">🎬 Contenido y Copys:</strong>
+                                <strong class="neon-text">🎬 Contenido y copys:</strong>
                                 <p>Textos y gestión de contenido para ventas seguras.</p>
                             </div>
                         </div>
@@ -681,10 +712,10 @@ s0.parentNode.insertBefore(s1,s0);
 
                     <div class="card-footer-mobile">
                         <div class="fuel-box fb-premium">
-                            <strong>🏁 Presupuesto Grandes Ligas:</strong>
+                            <strong>🏁 Presupuesto grandes ligas:</strong>
                             <p>Invierta <strong>19.000 Pesos diarios</strong> para dominar su sector local.</p>
                         </div>
-                        <a href="https://wa.me/573012800024?text=Hola%20sapien%20quiero%20el%20plan%20piloto%20experto%20para%20vender%20en%20automatico%20🏎️🏁" class="btn-action b-dark">
+                        <a href="https://wa.me/573012800024?text=Hola%20sapien%20quiero%20el%20plan%20piloto%20experto%20para%20vender%20en%20automatico%20🏎️🏁" class="btn-action b-dark" target="_blank" rel="noopener noreferrer">
                             Solicitar mi piloto
                         </a>
                     </div>
@@ -705,7 +736,7 @@ s0.parentNode.insertBefore(s1,s0);
         --c-neon-v: #25D366;
     }
 
-    .pricing-engine { background-color: var(--c-fondo); padding: 80px 4%; font-family: 'Inter', sans-serif; overflow: hidden; position: relative; margin-bottom: 40px; }
+    .pricing-engine { background-color: var(--c-fondo); padding: 80px 4%; font-family: 'Inter', sans-serif; overflow: hidden; position: relative; margin-bottom: 60px; }
     .pricing-bg-decor { position: absolute; inset: 0; pointer-events: none; }
     .profit-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 60, 0, 0.15) 1.5px, transparent 1.5px); background-size: 60px 60px; }
     .float-icon { position: absolute; font-size: 2.5rem; opacity: 0.15; }
@@ -815,7 +846,7 @@ s0.parentNode.insertBefore(s1,s0);
         overflow: hidden; 
         position: relative; 
         border-top: 1px solid #111;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
     }
 
     .bg-lines { position: absolute; inset: 0; display: flex; justify-content: space-around; pointer-events: none; z-index: 1; opacity: 0.15; }
@@ -981,11 +1012,14 @@ s0.parentNode.insertBefore(s1,s0);
     function openLightbox(src) {
         stopAutoPlay();
         const lb = document.getElementById('lightbox');
-        document.getElementById('lb-img').src = src;
-        lb.classList.add('active');
+        const lbImg = document.getElementById('lb-img');
+        if (lbImg) lbImg.src = src;
+        if (lb) lb.classList.add('active');
     }
+    
     function closeLightbox() { 
-        document.getElementById('lightbox').classList.remove('active'); 
+        const lb = document.getElementById('lightbox');
+        if (lb) lb.classList.remove('active'); 
         startAutoPlay();
     }
 </script>
@@ -1028,11 +1062,11 @@ s0.parentNode.insertBefore(s1,s0);
 
     .control-room {
         position: relative;
-        min-height: 120vh;
+        min-height: 100vh;
         background: #020202;
         padding: 100px 10%;
         overflow: hidden;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
     }
 
     .smoke-overlay {
@@ -1122,25 +1156,29 @@ s0.parentNode.insertBefore(s1,s0);
 <script>
     function triggerLocked(type) {
         const msg = document.getElementById('msg-' + type);
-        msg.classList.add('show');
+        if (msg) msg.classList.add('show');
         
-        const card = msg.parentElement;
-        card.style.transform = "translateX(5px)";
-        setTimeout(() => card.style.transform = "translateX(-5px)", 50);
-        setTimeout(() => card.style.transform = "translateX(0)", 100);
+        const card = msg ? msg.parentElement : null;
+        if (card) {
+            card.style.transform = "translateX(5px)";
+            setTimeout(() => card.style.transform = "translateX(-5px)", 50);
+            setTimeout(() => card.style.transform = "translateX(0)", 100);
+        }
 
         setTimeout(() => {
-            msg.classList.remove('show');
+            if (msg) msg.classList.remove('show');
         }, 2000);
     }
 
     window.addEventListener('scroll', () => {
         const radar = document.getElementById('radarNav');
-        const trigger = document.querySelector('.control-room').offsetTop;
-        if (window.scrollY > trigger - 300) {
-            radar.classList.add('active');
-        } else {
-            radar.classList.remove('active');
+        const trigger = document.querySelector('.control-room');
+        if (radar && trigger) {
+            if (window.scrollY > trigger.offsetTop - 300) {
+                radar.classList.add('active');
+            } else {
+                radar.classList.remove('active');
+            }
         }
     });
 
@@ -1148,6 +1186,7 @@ s0.parentNode.insertBefore(s1,s0);
     const canvas = document.getElementById('thermalCanvas');
 
     function createBurn(x, y) {
+        if (!canvas) return;
         const burn = document.createElement('div');
         burn.className = 'burn-mark';
         burn.style.left = x + 'px';
@@ -1156,19 +1195,21 @@ s0.parentNode.insertBefore(s1,s0);
         setTimeout(() => burn.remove(), 1800);
     }
 
-    room.addEventListener('mousemove', (e) => {
-        const rect = room.getBoundingClientRect();
-        createBurn(e.clientX - rect.left, e.clientY - rect.top);
-    });
+    if (room && canvas) {
+        room.addEventListener('mousemove', (e) => {
+            const rect = room.getBoundingClientRect();
+            createBurn(e.clientX - rect.left, e.clientY - rect.top);
+        });
 
-    room.addEventListener('touchmove', (e) => {
-        const rect = room.getBoundingClientRect();
-        const touch = e.touches[0];
-        createBurn(touch.clientX - rect.left, touch.clientY - rect.top);
-    });
+        room.addEventListener('touchmove', (e) => {
+            const rect = room.getBoundingClientRect();
+            const touch = e.touches[0];
+            createBurn(touch.clientX - rect.left, touch.clientY - rect.top);
+        });
+    }
 </script>
 
-    <a href="https://wa.me/573012800024?text=Hola%20sapien%20deseo%20vender%20mas%20y%20recuperar%20la%20rentabilidad%20de%20mi%20negocio%20📈💰" class="wa-float" target="_blank">
+    <a href="https://wa.me/573012800024?text=Hola%20sapien%20deseo%20vender%20mas%20y%20recuperar%20la%20rentabilidad%20de%20mi%20negocio%20📈💰" class="wa-float" target="_blank" rel="noopener noreferrer">
         <div class="wa-badge" id="notif-count">0</div>
         <svg viewBox="0 0 24 24" fill="white">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72 1.025 3.69 1.565 5.707 1.566h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -1181,19 +1222,21 @@ s0.parentNode.insertBefore(s1,s0);
 
    <script>
     const textElement = document.getElementById('typewriter');
-    const strText = textElement.textContent;
-    textElement.textContent = "";
-    let i = 0;
-    function typeEffect() {
-        if (i < strText.length) {
-            textElement.textContent += strText.charAt(i);
-            i++;
-            setTimeout(typeEffect, 100);
+    if (textElement) {
+        const strText = textElement.textContent;
+        textElement.textContent = "";
+        let i = 0;
+        function typeEffect() {
+            if (i < strText.length) {
+                textElement.textContent += strText.charAt(i);
+                i++;
+                setTimeout(typeEffect, 100);
+            }
         }
+        setTimeout(typeEffect, 1000);
     }
-    setTimeout(typeEffect, 1000);
 
-    const badge = document.getElementById('notif-count') || document.getElementById('waBadge');
+    const badge = document.getElementById('notif-count');
     
     let state = JSON.parse(localStorage.getItem('rs_badge_state')) || {
         count: 0,
@@ -1247,13 +1290,13 @@ s0.parentNode.insertBefore(s1,s0);
         badge.textContent = state.count;
         
         badge.style.transform = 'scale(1.2)';
-        setTimeout(() => { badge.style.transform = 'scale(1)'; }, 300);
+        setTimeout(() => { if(badge) badge.style.transform = 'scale(1)'; }, 300);
 
         saveState();
         setTimeout(updateWhatsAppBadge, delay);
     }
 
-    if (state.count > 0) {
+    if (state.count > 0 && badge) {
         badge.textContent = state.count;
         badge.style.opacity = "1";
     }
@@ -1267,7 +1310,6 @@ s0.parentNode.insertBefore(s1,s0);
             --rs-bg: #050505;
             --rs-card: #0D0D0D;
             --rs-text: #f0f0f0;
-            --rs-gradient: linear-gradient(90deg, #FF3C00, #FF7400, #FF3C00);
         }
 
         .footer-wrapper {
@@ -1335,7 +1377,7 @@ s0.parentNode.insertBefore(s1,s0);
             grid-template-columns: 1.5fr 1fr 1fr;
             gap: 50px;
         }
-        .main-footer h2, .main-footer h5 { text-transform: lowercase; font-family: 'Anton'; }
+        .main-footer h2, .main-footer h5 { font-family: 'Anton'; }
 
         .social-icons { display: flex; gap: 25px; margin: 25px 0; }
         .social-icons a { color: #fff; font-size: 22px; transition: 0.3s; }
@@ -1355,7 +1397,6 @@ s0.parentNode.insertBefore(s1,s0);
             display: flex;
             align-items: center;
             gap: 8px;
-            text-transform: lowercase;
         }
         .legal-item:hover { color: var(--rs-neon); }
         .legal-item i { font-size: 0.7rem; }
@@ -1366,7 +1407,6 @@ s0.parentNode.insertBefore(s1,s0);
             padding-top: 60px;
             font-size: 0.75rem;
             color: #333;
-            text-transform: lowercase;
         }
 
         @media (max-width: 900px) {
@@ -1383,31 +1423,31 @@ s0.parentNode.insertBefore(s1,s0);
                 <p style="color:#555; font-size:1rem; line-height:1.6;">Ingeniería aplicada para que su restaurante empiece a escalar de forma real.</p>
                 
                 <div class="btn-web-container">
-                    <a href="https://redsapien.com/" target="_blank" class="btn-official-v4">Nuestra web oficial</a>
+                    <a href="https://redsapien.com/" target="_blank" rel="noopener noreferrer" class="btn-official-v4">Nuestra web oficial</a>
                 </div>
 
                 <div class="spotify-mini">
                     <div class="play-btn" id="musicCtrl"><i class="fas fa-play"></i></div>
                     <div style="flex:1">
-                        <span style="display:block; font-size:0.85rem; font-weight:bold; color:#fff; text-transform:lowercase;">Don't go away</span>
-                        <span style="font-size:0.7rem; color:#444; text-transform:lowercase;">Un tema mientras decide si vender y ganar más...</span>
+                        <span style="display:block; font-size:0.85rem; font-weight:bold; color:#fff;">Don't go away</span>
+                        <span style="font-size:0.7rem; color:#444;">Un tema mientras decide si vender y ganar más...</span>
                     </div>
                 </div>
             </div>
 
             <div style="padding-top:15px;">
                 <h5 style="color:var(--rs-neon); font-size:1.1rem; margin-bottom:25px;">Conexión</h5>
-                <a href="mailto:redsapiencolombia@proton.me" style="color:#fff; text-decoration:none; display:block; margin-bottom:10px; text-transform:lowercase;">redsapiencolombia@proton.me</a>
-                <a href="tel:+573012800024" style="color:#fff; text-decoration:none; display:block; text-transform:lowercase;">+57 301 280 0024</a>
+                <a href="mailto:redsapiencolombia@proton.me" style="color:#fff; text-decoration:none; display:block; margin-bottom:10px;">redsapiencolombia@proton.me</a>
+                <a href="tel:+573012800024" style="color:#fff; text-decoration:none; display:block;">+57 301 280 0024</a>
                 <div class="legal-links" style="margin-top: 20px;">
-                    <div class="legal-item" style="color: #fff; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; text-transform: lowercase;">
+                    <div class="legal-item" style="color: #fff; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-map-marker-alt" style="font-size: 0.8rem; color: var(--rs-neon);"></i> Dirección: Manizales - Caldas, Colombia
                     </div>
                 </div>
                 
                 <div class="legal-links">
-                    <a href="Descargables/Política de privacidad.pdf" download class="legal-item" target="_blank">
-                        <i class="fas fa-file-pdf"></i> Política de privacidad (pdf)
+                    <a href="Descargables/Política de privacidad.pdf" download class="legal-item" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-file-pdf"></i> Política de privacidad (PDF)
                     </a>
                 </div>
             </div>
@@ -1415,9 +1455,9 @@ s0.parentNode.insertBefore(s1,s0);
             <div class="social-section">
                 <h5 style="color:var(--rs-neon); font-size:1.1rem;">Comunidad</h5>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/redsapien/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/people/Red-Sapien/61588508945451/?locale=es_LA" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://github.com/redsapien" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/redsapien/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Red-Sapien/61588508945451/?locale=es_LA" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://github.com/redsapien" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
@@ -1427,7 +1467,7 @@ s0.parentNode.insertBefore(s1,s0);
         </footer>
     </div>
 
-    <audio id="rsAudio" loop>
+    <audio id="rsAudio" loop preload="none">
         <source src="Audio/2000s.mp3" type="audio/mpeg">
     </audio>
 
@@ -1436,17 +1476,19 @@ s0.parentNode.insertBefore(s1,s0);
     <script>
         const audio = document.getElementById('rsAudio');
         const musicBtn = document.getElementById('musicCtrl');
-        audio.volume = 0.3;
+        if (audio && musicBtn) {
+            audio.volume = 0.3;
 
-        musicBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                audio.pause();
-                musicBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
+            musicBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    audio.pause();
+                    musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+        }
     </script>
 
 </body>
