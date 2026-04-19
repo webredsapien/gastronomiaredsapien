@@ -475,6 +475,205 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <style>
+    .vg-section {
+        background: #000;
+        padding: 80px 20px;
+        border-top: 1px solid #111;
+        border-bottom: 1px solid #111;
+        font-family: sans-serif;
+    }
+
+    .vg-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* Título Corto y Autoridad */
+    .vg-header {
+        margin-bottom: 50px;
+        text-align: left;
+    }
+
+    .vg-title-main {
+        font-size: clamp(26px, 6vw, 36px);
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 15px;
+    }
+
+    .vg-title-main span { color: #CE1126; }
+
+    .vg-lead {
+        color: #888;
+        font-size: 16px;
+        max-width: 450px;
+        margin-bottom: 25px;
+    }
+
+    /* Casos de Éxito */
+    .vg-case-card {
+        background: #080808;
+        border: 1px solid #1a1a1a;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    @media (min-width: 992px) {
+        .vg-case-card { flex-direction: row; align-items: center; }
+        .vg-info-side { flex: 1; }
+        .vg-visual-side { flex: 1.2; }
+    }
+
+    .vg-badge {
+        display: inline-block;
+        color: #CE1126;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .vg-case-title {
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    /* Lista Humana y Corta */
+    .vg-list {
+        padding: 0;
+        margin: 0 0 25px 0;
+        list-style: none;
+    }
+
+    .vg-list li {
+        color: #ccc;
+        font-size: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .vg-list li::before { content: "•"; color: #CE1126; font-weight: bold; }
+
+    /* Contenedores de Imágenes (Mockups) */
+    .vg-mockup-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .vg-pc {
+        width: 85%;
+        border-radius: 10px;
+        border: 3px solid #222;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        overflow: hidden;
+    }
+
+    .vg-mobile {
+        width: 80px;
+        height: 160px;
+        background: #000;
+        border: 3px solid #333;
+        border-radius: 15px;
+        position: absolute;
+        bottom: -10px;
+        right: 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+        overflow: hidden;
+    }
+
+    .vg-btn-action {
+        display: inline-block;
+        padding: 12px 25px;
+        border: 1px solid #CE1126;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .vg-btn-action:hover { background: #CE1126; }
+
+    /* Responsividad Móvil Crítica */
+    @media (max-width: 768px) {
+        .vg-pc { width: 100%; }
+        .vg-mobile { width: 65px; height: 130px; right: -5px; }
+        .vg-case-card { padding: 20px; }
+    }
+</style>
+
+<section class="vg-section">
+    <div class="vg-container">
+        
+        <header class="vg-header">
+            <h2 class="vg-title-main">Somos vieja guardia impulsando el éxito en <span>gastronomía y cafetería.</span></h2>
+            <p class="vg-lead">
+    <strong style="color: #fff; font-size: 1.1em; display: block; margin-bottom: 8px;">[Nuevas marcas que confían en nosotr@s]</strong>
+</p>
+        </header>
+
+        <article class="vg-case-card">
+            <div class="vg-info-side">
+                <span class="vg-badge">BOGOTÁ • ACTIV@ HACE 13 DÍAS</span>
+                <h3 class="vg-case-title">Bogótaco</h3>
+                <ul class="vg-list">
+                    <li>3 sedes en Fontibón | 3 perfiles de Google optimizados.</li>
+                    <li>Sitio web de pedidos para sus combos de comida mexicana.</li>
+                    <li>Automatización de reputación con agente de reseñas de IA.</li>
+                </ul>
+                <a href="https://bogotaco.redsapien.com/" target="_blank" class="vg-btn-action">VER PÁGINA DE COMBOS</a>
+            </div>
+            <div class="vg-visual-side">
+                <div class="vg-mockup-container">
+                    <div class="vg-pc">
+                        <img src="Imagenes/Bogotaco-perfil-google.webp" style="width:100%;" alt="PC">
+                    </div>
+                    <div class="vg-mobile">
+                        <img src="Imagenes/Bogotaco-captura-web.webp" style="width:100%;" alt="Móvil">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="vg-case-card">
+            <div class="vg-info-side">
+                <span class="vg-badge" style="color: #00ff88;">MANIZALES • ÉXITO</span>
+                <h3 class="vg-case-title">Bross Manizales</h3>
+                <ul class="vg-list">
+                    <li>Menos de 700 pesos por mensaje de agendamiento.</li>
+                    <li>77 mensajes de venta directo a WhatsApp en solo 3 días de inicio.</li>
+                    <li>Micro plataforma web con Pixel conectada a campaña de Facebook.</li>
+                </ul>
+                <a href="https://brossmzl.redsapien.com/" target="_blank" class="vg-btn-action">VER MICRO PLATAFORMA</a>
+            </div>
+            <div class="vg-visual-side">
+                <div class="vg-mockup-container">
+                    <div class="vg-pc">
+                        <img src="Imagenes/Estadisticas-Bross-Manizales.webp" style="width:100%;" alt="PC">
+                    </div>
+                    <div class="vg-mobile">
+                        <img src="Imagenes/Bross-manizales-captura-web.webp" style="width:100%;" alt="Móvil">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<style>
     .vault-container { 
         width: 100%; 
         margin-top: 0 !important; 
