@@ -27,26 +27,68 @@ src="https://www.facebook.com/tr?id=2345912919227229&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+    <!-- Meta Pixel Eventos -->
+
     <script>
-// Forzamos el rastreo de clics estratégicos
-window.addEventListener('click', function(e) {
-    // 1. Validar si es clic en WhatsApp
-    if (e.target.closest('a[href*="wa.me"]')) {
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead', { content_name: 'WhatsApp Sapien' });
-            console.log('✅ META: Lead enviado');
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    // Seguridad: Si el píxel no ha cargado, no ejecutar para evitar errores en consola
+    if (typeof fbq === 'undefined') return;
+
+    // 1. EVENTO: LEAD (Cliente potencial)
+    // Según Meta: "Envío de información por parte de un cliente que sabe que tu negocio puede contactarlo".
+    // Lo aplicamos a los botones de Auditoría y Planes de Precios.
+    const leadSelectors = 'a[href*="wa.me"]'; // Captura todos tus enlaces de WhatsApp
+    document.querySelectorAll(leadSelectors).forEach(function(el) {
+        el.addEventListener('click', function() {
+            fbq('track', 'Lead', {
+                content_name: 'Auditoría Gastronómica',
+                content_category: 'Servicios Digitales'
+            });
+            console.log('✅ Meta Event: Lead (WhatsApp)');
+        });
+    });
+
+    // 2. EVENTO: VIEWCONTENT (Ver contenido)
+    // Según Meta: "Visita a una página que te interesa (producto/destino)".
+    // Lo aplicamos a los botones que abren las webs de tus clientes (Portafolio).
+    const portfolioSelectors = 'a.vg-btn-action, a.btn-live';
+    document.querySelectorAll(portfolioSelectors).forEach(function(el) {
+        el.addEventListener('click', function() {
+            fbq('track', 'ViewContent', { 
+                content_name: 'Casos de Éxito',
+                content_type: 'Portfolio'
+            });
+            console.log('🔍 Meta Event: ViewContent (Portafolio)');
+        });
+    });
+
+    // 3. EVENTO: CONTACT (Contactar)
+    // Según Meta: "Comunicación por teléfono, SMS, chat u otros medios".
+    // Lo usamos específicamente para el botón flotante de WhatsApp, diferenciándolo del Lead de auditoría.
+    const floatWhatsApp = document.querySelector('.wa-float');
+    if (floatWhatsApp) {
+        floatWhatsApp.addEventListener('click', function() {
+            fbq('track', 'Contact');
+            console.log('📱 Meta Event: Contact (WhatsApp Flotante)');
+        });
     }
-    
-    // 2. Validar si es clic en Portafolio (Casos de éxito)
-    if (e.target.closest('a.vg-btn-action') || e.target.closest('a.btn-live')) {
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'ViewContent', { content_name: 'Ver Portafolio' });
-            console.log('🔍 META: ViewContent enviado');
-        }
+
+    // 4. EVENTO: FINDLOCATION (Buscar ubicación)
+    // Según Meta: "Cuando una persona busca una de tus ubicaciones físicas".
+    // Lo aplicamos al enlace de Google Maps en tu footer (Manizales).
+    const mapsLink = document.querySelector('a[href*="maps"]');
+    if (mapsLink) {
+        mapsLink.addEventListener('click', function() {
+            fbq('track', 'FindLocation');
+            console.log('📍 Meta Event: FindLocation (Google Maps)');
+        });
     }
-}, true);
+});
 </script>
+
+    <!-- End Meta Pixel Eventos -->
+
+    <!-- Inicio Clarity -->
 
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -55,6 +97,8 @@ window.addEventListener('click', function(e) {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wetgwo8uax");
 </script>
+
+    <!-- End Clarity -->
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
