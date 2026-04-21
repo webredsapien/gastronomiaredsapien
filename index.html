@@ -27,6 +27,27 @@ src="https://www.facebook.com/tr?id=2345912919227229&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+    <script>
+// Forzamos el rastreo de clics estratégicos
+window.addEventListener('click', function(e) {
+    // 1. Validar si es clic en WhatsApp
+    if (e.target.closest('a[href*="wa.me"]')) {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', { content_name: 'WhatsApp Sapien' });
+            console.log('✅ META: Lead enviado');
+        }
+    }
+    
+    // 2. Validar si es clic en Portafolio (Casos de éxito)
+    if (e.target.closest('a.vg-btn-action') || e.target.closest('a.btn-live')) {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', { content_name: 'Ver Portafolio' });
+            console.log('🔍 META: ViewContent enviado');
+        }
+    }
+}, true);
+</script>
+
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -1709,54 +1730,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
     </script>
-
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof fbq === 'undefined') return;
-
-    // 1. EVENTO: LEAD (WhatsApp - El objetivo de tu campaña)
-    // Captura: Botón Hero, Planes de Precios, Botón Radar y Botón Flotante
-    document.querySelectorAll('a[href*="wa.me"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-            fbq('track', 'Lead', { content_name: 'Contacto Directo WhatsApp' });
-            console.log('✅ Meta: Lead (WhatsApp)');
-        });
-    });
-
-    // 2. EVENTO: VIEWCONTENT (Portafolio y Casos de Éxito)
-    // Captura: Todos los botones "Ver Ecosistema" y "Ver Máquina de Ventas"
-    // Filtra los enlaces que contienen redsapien.com (subdominios) y el caso de Sr Medrano
-    document.querySelectorAll('a.vg-btn-action, a.btn-live').forEach(function(el) {
-        el.addEventListener('click', function() {
-            fbq('track', 'ViewContent', { 
-                content_name: 'Visualización Portafolio',
-                content_category: 'Casos de Exito'
-            });
-            console.log('🔍 Meta: ViewContent (Portafolio)');
-        });
-    });
-
-    // 3. EVENTO: CONTACT (Dirección Física)
-    // Captura: Clic en la dirección de Manizales en el Footer
-    const addressLink = document.querySelector('a[href*="maps"]');
-    if (addressLink) {
-        addressLink.addEventListener('click', function() {
-            fbq('track', 'Contact', { content_name: 'Ubicación Oficina Manizales' });
-            console.log('📍 Meta: Contact (Maps)');
-        });
-    }
-
-    // 4. EVENTO: FINDLOCATION (Validación Social)
-    // Captura: Clic en el icono de Instagram
-    const instagramLink = document.querySelector('a[href*="instagram.com"]');
-    if (instagramLink) {
-        instagramLink.addEventListener('click', function() {
-            fbq('track', 'FindLocation', { content_name: 'Instagram Corporativo' });
-            console.log('📱 Meta: FindLocation (Instagram)');
-        });
-    }
-});
-</script>
 
 </body>
 </html>
